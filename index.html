@@ -3065,6 +3065,421 @@ function acompanhar_pedido_fecharModalItem() {
       </div>
     </section>
 
+    <section data-tela="painel-administrativo" class="hidden">
+      <div id="painel-admin-content">
+        <!-- Cabeçalho da tela -->
+        <div class="mb-6 fade-in">
+          <h1 class="text-2xl font-display font-bold text-neutral-900">Painel Administrativo</h1>
+          <p class="text-sm text-neutral-500 mt-1">Visão geral da plataforma e gestão</p>
+        </div>
+
+        <!-- Cards KPI -->
+        <div class="grid grid-cols-2 gap-3 mb-6 fade-in">
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-neutral-100 active:scale-[0.98] transition-transform">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-9 h-9 rounded-xl bg-marca-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <span class="flex items-center text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                12%
+              </span>
+            </div>
+            <p class="text-2xl font-display font-bold text-neutral-900">2.847</p>
+            <p class="text-xs text-neutral-500 mt-0.5">Usuários cadastrados</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-neutral-100 active:scale-[0.98] transition-transform">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <span class="flex items-center text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                8%
+              </span>
+            </div>
+            <p class="text-2xl font-display font-bold text-neutral-900">186</p>
+            <p class="text-xs text-neutral-500 mt-0.5">Estabelecimentos ativos</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-neutral-100 active:scale-[0.98] transition-transform">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+              </div>
+              <span class="flex items-center text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                23%
+              </span>
+            </div>
+            <p class="text-2xl font-display font-bold text-neutral-900">341</p>
+            <p class="text-xs text-neutral-500 mt-0.5">Pedidos hoje</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-neutral-100 active:scale-[0.98] transition-transform">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-9 h-9 rounded-xl bg-marca-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="flex items-center text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                15%
+              </span>
+            </div>
+            <p class="text-2xl font-display font-bold text-neutral-900">R$ 48.2k</p>
+            <p class="text-xs text-neutral-500 mt-0.5">Receita do mês</p>
+          </div>
+        </div>
+
+        <!-- Gráfico de crescimento de usuários -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-neutral-100 mb-6 fade-in">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-base font-display font-semibold text-neutral-900">Crescimento de Usuários</h2>
+              <p class="text-xs text-neutral-500 mt-0.5">Últimos 7 dias</p>
+            </div>
+            <span class="badge badge-success text-xs">+18% na semana</span>
+          </div>
+          <svg viewBox="0 0 340 160" class="w-full h-40">
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <polyline points="0,140 48,120 96,128 144,95 192,105 240,70 288,80 340,45" fill="url(#chartFill)" stroke="none"/>
+            <polyline points="0,140 48,120 96,128 144,95 192,105 240,70 288,80 340,45" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="0" cy="140" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="48" cy="120" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="96" cy="128" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="144" cy="95" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="192" cy="105" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="240" cy="70" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="288" cy="80" r="4" fill="#D4AF37" stroke="white" stroke-width="2"/>
+            <circle cx="340" cy="45" r="5" fill="#D4AF37" stroke="white" stroke-width="2.5"/>
+            <line x1="0" y1="150" x2="340" y2="150" stroke="#E5E5E5" stroke-width="1"/>
+            <text x="0" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Seg</text>
+            <text x="48" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Ter</text>
+            <text x="96" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Qua</text>
+            <text x="144" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Qui</text>
+            <text x="192" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Sex</text>
+            <text x="240" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Sáb</text>
+            <text x="288" y="162" text-anchor="middle" fill="#A3A3A3" font-size="10" font-family="Inter, sans-serif">Dom</text>
+          </svg>
+        </div>
+
+        <!-- Estabelecimentos pendentes de aprovação -->
+        <div class="bg-white rounded-2xl shadow-sm border border-neutral-100 mb-6 overflow-hidden fade-in">
+          <div class="p-5 pb-3 flex items-center justify-between">
+            <div>
+              <h2 class="text-base font-display font-semibold text-neutral-900">Estabelecimentos Pendentes</h2>
+              <p class="text-xs text-neutral-500 mt-0.5">Aguardando aprovação</p>
+            </div>
+            <span class="badge badge-warning text-xs">8 pendentes</span>
+          </div>
+          <div class="px-5 pb-2">
+            <input type="text" id="painel-search-estab" placeholder="Buscar estabelecimento..."
+              class="w-full text-sm bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-2.5 pl-10 text-neutral-800 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all"
+              oninput="painel_administrativo_filtrarEstabelecimentos()">
+            <svg class="w-4 h-4 text-neutral-400 absolute mt-[-28px] ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <div id="painel-lista-estabelecimentos" class="divide-y divide-neutral-100 max-h-80 overflow-y-auto">
+          </div>
+          <div id="painel-vazio-estabelecimentos" class="hidden p-8 text-center">
+            <svg class="w-12 h-12 text-neutral-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-sm text-neutral-400">Nenhum estabelecimento encontrado</p>
+          </div>
+        </div>
+
+        <!-- Banners publicitários -->
+        <div class="bg-white rounded-2xl shadow-sm border border-neutral-100 mb-6 overflow-hidden fade-in">
+          <div class="p-5 pb-3">
+            <h2 class="text-base font-display font-semibold text-neutral-900">Banners Publicitários</h2>
+            <p class="text-xs text-neutral-500 mt-0.5">Gerenciar campanhas de anúncios</p>
+          </div>
+          <div class="px-5 pb-2 flex gap-2">
+            <button onclick="painel_administrativo_filtrarBanners('todos')" id="painel-btn-todos" class="text-xs font-medium px-3 py-1.5 rounded-full bg-marca-900 text-white transition-all">Todos</button>
+            <button onclick="painel_administrativo_filtrarBanners('aprovado')" id="painel-btn-aprovado" class="text-xs font-medium px-3 py-1.5 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-all">Aprovados</button>
+            <button onclick="painel_administrativo_filtrarBanners('pendente')" id="painel-btn-pendente" class="text-xs font-medium px-3 py-1.5 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-all">Pendentes</button>
+          </div>
+          <div id="painel-lista-banners" class="px-5 pb-5 space-y-3 max-h-72 overflow-y-auto">
+          </div>
+        </div>
+
+        <!-- Ações rápidas -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-neutral-100 mb-6 fade-in">
+          <h2 class="text-base font-display font-semibold text-neutral-900 mb-3">Ações Rápidas</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="mostrarTela('area-do-anunciante')" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-95 text-left">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-neutral-800">Novo Anunciante</p>
+                <p class="text-[10px] text-neutral-400">Cadastrar</p>
+              </div>
+            </button>
+            <button onclick="painel_administrativo_abrirRelatorio()" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-95 text-left">
+              <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-neutral-800">Relatórios</p>
+                <p class="text-[10px] text-neutral-400">Exportar dados</p>
+              </div>
+            </button>
+            <button onclick="painel_administrativo_abrirConfig()" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-95 text-left">
+              <div class="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-neutral-800">Configurações</p>
+                <p class="text-[10px] text-neutral-400">Plataforma</p>
+              </div>
+            </button>
+            <button onclick="painel_administrativo_abrirPagamentos()" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-95 text-left">
+              <div class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-neutral-800">Pagamentos</p>
+                <p class="text-[10px] text-neutral-400">Mercado Pago</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="h-6"></div>
+      </div>
+
+      <!-- Modal de detalhe do estabelecimento -->
+      <div id="painel-modal-estab" class="hidden fixed inset-0 z-50 flex items-end justify-center">
+        <div class="absolute inset-0 bg-black/50" onclick="fecharModal()"></div>
+        <div class="relative bg-white rounded-t-3xl w-full max-w-[430px] max-h-[85vh] overflow-y-auto p-6 pb-8 transform transition-transform">
+          <button onclick="fecharModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center hover:bg-neutral-200 transition-colors">
+            <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+          <div id="painel-modal-estab-content"></div>
+        </div>
+      </div>
+
+      <script>
+        // Dados de exemplo
+        var painel_administrativo_estabelecimentos = [
+          { id: 1, nome: 'Pizzaria Napoli', categoria: 'Alimentação', cidade: 'São Paulo, SP', telefone: '(11) 98765-4321', email: 'contato@pizzarianapoli.com', status: 'pendente', dataCadastro: '2025-01-15', avatar: 'PN', corAvatar: 'bg-red-100 text-red-700', descricao: 'Pizzaria artesanal com massas fermentadas por 48h. Fundada em 2018, atende delivery e retirada.' },
+          { id: 2, nome: 'TechCell Assistência', categoria: 'Serviços', cidade: 'Rio de Janeiro, RJ', telefone: '(21) 97654-3210', email: 'suporte@techcell.com.br', status: 'pendente', dataCadastro: '2025-01-14', avatar: 'TC', corAvatar: 'bg-blue-100 text-blue-700', descricao: 'Assistência técnica especializada em smartphones e tablets. Mais de 5 anos de mercado.' },
+          { id: 3, nome: 'Beauty Salon Studio', categoria: 'Beleza', cidade: 'Belo Horizonte, MG', telefone: '(31) 96543-2109', email: 'agenda@beautysalon.com', status: 'pendente', dataCadastro: '2025-01-14', avatar: 'BS', corAvatar: 'bg-pink-100 text-pink-700', descricao: 'Salão de beleza completo com serviços de cabelo, maquiagem e estética. Ambiente climatizado.' },
+          { id: 4, nome: 'Supermercado Economia', categoria: 'Supermercado', cidade: 'Curitiba, PR', telefone: '(41) 95432-1098', email: 'gerencia@economia.com.br', status: 'pendente', dataCadastro: '2025-01-13', avatar: 'SE', corAvatar: 'bg-green-100 text-green-700', descricao: 'Rede de supermercados com 3 lojas na Grande Curitiba. Oferecemos delivery em até 2h.' },
+          { id: 5, nome: 'AutoPeças Central', categoria: 'Auto', cidade: 'Porto Alegre, RS', telefone: '(51) 94321-0987', email: 'vendas@autopecascentral.com', status: 'pendente', dataCadastro: '2025-01-13', avatar: 'AC', corAvatar: 'bg-orange-100 text-orange-700', descricao: 'Loja de peças automotivas e acessórios. Trabalhamos com todas as marcas e modelos.' },
+          { id: 6, nome: 'PetShop Amigo Fiel', categoria: 'Pets', cidade: 'Salvador, BA', telefone: '(71) 93210-9876', email: 'petshop@amigofiel.com', status: 'pendente', dataCadastro: '2025-01-12', avatar: 'PF', corAvatar: 'bg-amber-100 text-amber-700', descricao: 'Pet shop completo com banho, tosa, hotel e veterinário. Delivery de ração e acessórios.' },
+          { id: 7, nome: 'Fitness Pro Academia', categoria: 'Esporte', cidade: 'Florianópolis, SC', telefone: '(48) 92109-8765', email: 'contato@fitnesspro.com', status: 'pendente', dataCadastro: '2025-01-12', avatar: 'FP', corAvatar: 'bg-teal-100 text-teal-700', descricao: 'Academia com musculação, aulas coletivas e personal trainer. Planos a partir de R$79/mês.' },
+          { id: 8, nome: 'Doces da Vó Maria', categoria: 'Alimentação', cidade: 'Recife, PE', telefone: '(81) 91098-7654', email: 'doces@vomaria.com', status: 'pendente', dataCadastro: '2025-01-11', avatar: 'DV', corAvatar: 'bg-purple-100 text-purple-700', descricao: 'Confeitaria artesanal especializada em bolos decorados, doces finos e brigadeiros gourmet.' }
+        ];
+
+        var painel_administrativo_banners = [
+          { id: 1, titulo: 'Super Oferta de Verão', anunciante: 'Pizzaria Napoli', status: 'aprovado', cor: 'from-orange-400 to-red-500', icone: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z', periodo: '15 Jan - 28 Jan', tipo: 'Banner principal' },
+          { id: 2, titulo: 'Promoção Tech Fever', anunciante: 'TechCell Assistência', status: 'aprovado', cor: 'from-blue-500 to-indigo-600', icone: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', periodo: '20 Jan - 05 Fev', tipo: 'Banner lateral' },
+          { id: 3, titulo: 'Beleza em Dobro', anunciante: 'Beauty Salon Studio', status: 'pendente', cor: 'from-pink-400 to-rose-500', icone: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z', periodo: '01 Fev - 14 Fev', tipo: 'Banner principal' },
+          { id: 4, titulo: 'Mercado em Casa - Frete Grátis', anunciante: 'Supermercado Economia', status: 'pendente', cor: 'from-green-400 to-emerald-500', icone: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z', periodo: '10 Fev - 24 Fev', tipo: 'Banner inferior' },
+          { id: 5, titulo: 'Auto Peças - Kit Completo', anunciante: 'AutoPeças Central', status: 'aprovado', cor: 'from-amber-500 to-orange-600', icone: 'M13 10V3L4 14h7v7l9-11h-7z', periodo: '05 Jan - 19 Jan', tipo: 'Banner lateral' },
+          { id: 6, titulo: 'Seu pet merece o melhor', anunciante: 'PetShop Amigo Fiel', status: 'pendente', cor: 'from-violet-400 to-purple-600', icone: 'M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m0 0h7.5', periodo: '01 Mar - 15 Mar', tipo: 'Banner principal' }
+        ];
+
+        var painel_administrativo_filtroBannerAtual = 'todos';
+
+        function painel_administrativo_renderizarEstabelecimentos(lista) {
+          var container = document.getElementById('painel-lista-estabelecimentos');
+          var vazio = document.getElementById('painel-vazio-estabelecimentos');
+          if (lista.length === 0) {
+            container.classList.add('hidden');
+            vazio.classList.remove('hidden');
+            return;
+          }
+          container.classList.remove('hidden');
+          vazio.classList.add('hidden');
+          var html = '';
+          lista.forEach(function(est) {
+            var statusBadge = est.status === 'pendente'
+              ? '<span class="badge badge-warning text-[10px]">Pendente</span>'
+              : '<span class="badge badge-success text-[10px]">Aprovado</span>';
+            html += '<div class="flex items-center gap-3 py-3.5 px-5 hover:bg-neutral-50 transition-colors cursor-pointer" onclick="painel_administrativo_abrirDetalheEstab(' + est.id + ')">' +
+              '<div class="w-10 h-10 rounded-full ' + est.corAvatar + ' flex items-center justify-center flex-shrink-0 text-sm font-bold">' + est.avatar + '</div>' +
+              '<div class="flex-1 min-w-0">' +
+                '<div class="flex items-center gap-2">' +
+                  '<p class="text-sm font-semibold text-neutral-900 truncate">' + est.nome + '</p>' +
+                  statusBadge +
+                '</div>' +
+                '<p class="text-xs text-neutral-500 mt-0.5">' + est.categoria + ' · ' + est.cidade + '</p>' +
+              '</div>' +
+              '<button onclick="event.stopPropagation(); abrirModal(\'<div class=\\'p-4\\'><p class=\\'text-sm text-neutral-600 mb-4\\'>Deseja aprovar <strong>' + est.nome + '</strong>?</p><div class=\\'flex gap-3\\'><button onclick=\\'painel_administrativo_aprovar(' + est.id + '); fecharModal();\\' class=\\'flex-1 btn btn-primary text-sm py-3 rounded-xl\\'>Aprovar</button><button onclick=\\'fecharModal()\\' class=\\'flex-1 btn btn-secondary text-sm py-3 rounded-xl\\'>Cancelar</button></div></div>\', \'Aprovar Estabelecimento\')" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition-colors active:scale-95">Aprovar</button>' +
+              '<button onclick="event.stopPropagation(); abrirModal(\'<div class=\\'p-4\\'><p class=\\'text-sm text-neutral-600 mb-4\\'>Deseja reprovar <strong>' + est.nome + '</strong>?</p><div class=\\'flex gap-3\\'><button onclick=\\'painel_administrativo_reprovar(' + est.id + '); fecharModal();\\' class=\\'flex-1 btn btn-primary text-sm py-3 rounded-xl bg-red-600\\'>Reprovar</button><button onclick=\\'fecharModal()\\' class=\\'flex-1 btn btn-secondary text-sm py-3 rounded-xl\\'>Cancelar</button></div></div>\', \'Reprovar Estabelecimento\')" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition-colors active:scale-95">Reprovar</button>' +
+            '</div>';
+          });
+          container.innerHTML = html;
+        }
+
+        function painel_administrativo_filtrarEstabelecimentos() {
+          var termo = document.getElementById('painel-search-estab').value.toLowerCase();
+          var filtrados = painel_administrativo_estabelecimentos.filter(function(est) {
+            return est.nome.toLowerCase().includes(termo) || est.categoria.toLowerCase().includes(termo) || est.cidade.toLowerCase().includes(termo);
+          });
+          painel_administrativo_renderizarEstabelecimentos(filtrados);
+        }
+
+        function painel_administrativo_abrirDetalheEstab(id) {
+          var est = painel_administrativo_estabelecimentos.find(function(e) { return e.id === id; });
+          if (!est) return;
+          var html = '<div class="text-center mb-5">' +
+            '<div class="w-16 h-16 rounded-full ' + est.corAvatar + ' flex items-center justify-center text-xl font-bold mx-auto mb-3">' + est.avatar + '</div>' +
+            '<h3 class="text-lg font-display font-bold text-neutral-900">' + est.nome + '</h3>' +
+            '<span class="badge badge-' + (est.status === 'pendente' ? 'warning' : 'success') + ' mt-1">' + (est.status === 'pendente' ? 'Pendente' : 'Aprovado') + '</span>' +
+          '</div>' +
+          '<div class="space-y-3 text-sm">' +
+            '<div class="flex justify-between py-2 border-b border-neutral-100"><span class="text-neutral-500">Categoria</span><span class="font-medium text-neutral-800">' + est.categoria + '</span></div>' +
+            '<div class="flex justify-between py-2 border-b border-neutral-100"><span class="text-neutral-500">Cidade</span><span class="font-medium text-neutral-800">' + est.cidade + '</span></div>' +
+            '<div class="flex justify-between py-2 border-b border-neutral-100"><span class="text-neutral-500">Telefone</span><span class="font-medium text-neutral-800">' + est.telefone + '</span></div>' +
+            '<div class="flex justify-between py-2 border-b border-neutral-100"><span class="text-neutral-500">E-mail</span><span class="font-medium text-neutral-800">' + est.email + '</span></div>' +
+            '<div class="flex justify-between py-2 border-b border-neutral-100"><span class="text-neutral-500">Cadastro</span><span class="font-medium text-neutral-800">' + dataBR(est.dataCadastro) + '</span></div>' +
+            '<div class="pt-2"><span class="text-neutral-500 block mb-1">Descrição</span><p class="text-neutral-700 leading-relaxed">' + est.descricao + '</p></div>' +
+          '</div>' +
+          '<div class="flex gap-3 mt-6">' +
+            '<button onclick="fecharModal(); painel_administrativo_aprovar(' + est.id + ')" class="flex-1 btn btn-primary text-sm py-3 rounded-xl active:scale-95">Aprovar</button>' +
+            '<button onclick="fecharModal(); painel_administrativo_reprovar(' + est.id + ')" class="flex-1 btn btn-secondary text-sm py-3 rounded-xl active:scale-95">Reprovar</button>' +
+          '</div>';
+          abrirModal(html, 'Detalhe do Estabelecimento');
+        }
+
+        function painel_administrativo_aprovar(id) {
+          var est = painel_administrativo_estabelecimentos.find(function(e) { return e.id === id; });
+          if (est) {
+            est.status = 'aprovado';
+            painel_administrativo_renderizarEstabelecimentos(painel_administrativo_estabelecimentos);
+            toast(est.nome + ' foi aprovado com sucesso!', 'ok');
+          }
+        }
+
+        function painel_administrativo_reprovar(id) {
+          painel_administrativo_estabelecimentos = painel_administrativo_estabelecimentos.filter(function(e) { return e.id !== id; });
+          painel_administrativo_renderizarEstabelecimentos(painel_administrativo_estabelecimentos);
+          toast('Estabelecimento reprovado.', 'info');
+        }
+
+        function painel_administrativo_renderizarBanners() {
+          var container = document.getElementById('painel-lista-banners');
+          var filtrados = painel_administrativo_banners;
+          if (painel_administrativo_filtroBannerAtual !== 'todos') {
+            filtrados = painel_administrativo_banners.filter(function(b) { return b.status === painel_administrativo_filtroBannerAtual; });
+          }
+          if (filtrados.length === 0) {
+            container.innerHTML = '<div class="text-center py-6"><svg class="w-10 h-10 text-neutral-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-xs text-neutral-400">Nenhum banner encontrado</p></div>';
+            return;
+          }
+          var html = '';
+          filtrados.forEach(function(banner) {
+            html += '<div class="bg-neutral-50 rounded-xl overflow-hidden border border-neutral-100 hover:shadow-md transition-shadow">' +
+              '<div class="bg-gradient-to-r ' + banner.cor + ' h-24 flex items-center justify-center relative">' +
+                '<svg class="w-8 h-8 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="' + banner.icone + '"/></svg>' +
+                '<span class="badge ' + (banner.status === 'aprovado' ? 'badge-success' : 'badge-warning') + ' absolute top-2 right-2 text-[10px]">' + (banner.status === 'aprovado' ? 'Aprovado' : 'Pendente') + '</span>' +
+              '</div>' +
+              '<div class="p-3">' +
+                '<p class="text-sm font-semibold text-neutral-900">' + banner.titulo + '</p>' +
+                '<p class="text-xs text-neutral-500 mt-1">' + banner.anunciante + '</p>' +
+                '<div class="flex items-center justify-between mt-2.5">' +
+                  '<span class="text-[10px] text-neutral-400">' + banner.periodo + '</span>' +
+                  '<span class="text-[10px] text-neutral-400 bg-white px-2 py-0.5 rounded-full border border-neutral-200">' + banner.tipo + '</span>' +
+                '</div>' +
+                (banner.status === 'pendente' ?
+                  '<div class="flex gap-2 mt-3">' +
+                    '<button onclick="painel_administrativo_aprovarBanner(' + banner.id + ')" class="flex-1 text-xs font-medium py-1.5 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition-colors active:scale-95">Aprovar</button>' +
+                    '<button onclick="painel_administrativo_reprovarBanner(' + banner.id + ')" class="flex-1 text-xs font-medium py-1.5 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition-colors active:scale-95">Reprovar</button>' +
+                  '</div>' : ''
+                ) +
+              '</div>' +
+            '</div>';
+          });
+          container.innerHTML = html;
+        }
+
+        function painel_administrativo_filtrarBanners(filtro) {
+          painel_administrativo_filtroBannerAtual = filtro;
+          document.getElementById('painel-btn-todos').className = 'text-xs font-medium px-3 py-1.5 rounded-full transition-all ' + (filtro === 'todos' ? 'bg-marca-900 text-white' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200');
+          document.getElementById('painel-btn-aprovado').className = 'text-xs font-medium px-3 py-1.5 rounded-full transition-all ' + (filtro === 'aprovado' ? 'bg-marca-900 text-white' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200');
+          document.getElementById('painel-btn-pendente').className = 'text-xs font-medium px-3 py-1.5 rounded-full transition-all ' + (filtro === 'pendente' ? 'bg-marca-900 text-white' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200');
+          painel_administrativo_renderizarBanners();
+        }
+
+        function painel_administrativo_aprovarBanner(id) {
+          var banner = painel_administrativo_banners.find(function(b) { return b.id === id; });
+          if (banner) {
+            banner.status = 'aprovado';
+            painel_administrativo_renderizarBanners();
+            toast('Banner "' + banner.titulo + '" aprovado!', 'ok');
+          }
+        }
+
+        function painel_administrativo_reprovarBanner(id) {
+          var idx = painel_administrativo_banners.findIndex(function(b) { return b.id === id; });
+          if (idx > -1) {
+            var nome = painel_administrativo_banners[idx].titulo;
+            painel_administrativo_banners.splice(idx, 1);
+            painel_administrativo_renderizarBanners();
+            toast('Banner "' + nome + '" reprovado e removido.', 'info');
+          }
+        }
+
+        function painel_administrativo_abrirRelatorio() {
+          var html = '<div class="p-2">' +
+            '<p class="text-sm text-neutral-600 mb-4">Selecione o tipo de relatório para exportar:</p>' +
+            '<div class="space-y-2">' +
+              '<button onclick="toast(\'Relatório de usuários exportado!\', \'ok\'); fecharModal();" class="w-full text-left p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-[0.98] flex items-center gap-3">' +
+                '<div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center"><svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>' +
+                '<div><p class="text-sm font-semibold text-neutral-800">Relatório de Usuários</p><p class="text-xs text-neutral-400">Lista completa de usuários cadastrados</p></div>' +
+              '</button>' +
+              '<button onclick="toast(\'Relatório de pedidos exportado!\', \'ok\'); fecharModal();" class="w-full text-left p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-[0.98] flex items-center gap-3">' +
+                '<div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center"><svg class="w-4 h-4 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>' +
+                '<div><p class="text-sm font-semibold text-neutral-800">Relatório de Pedidos</p><p class="text-xs text-neutral-400">Pedidos e transações do período</p></div>' +
+              '</button>' +
+              '<button onclick="toast(\'Relatório financeiro exportado!\', \'ok\'); fecharModal();" class="w-full text-left p-3 rounded-xl bg-neutral-50 hover:bg-marca-50 transition-colors active:scale-[0.98] flex items-center gap-3">' +
+                '<div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center"><svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
+                '<div><p class="text-sm font-semibold text-neutral-800">Relatório Financeiro</p><p class="text-xs text-neutral-400">Receitas e transações do mês</p></div>' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+          abrirModal(html, 'Exportar Relatórios');
+        }
+
+        function painel_administrativo_abrirConfig() {
+          var html = '<div class="p-2 space-y-3">' +
+            '<div class="flex justify-between items-center py-2 border-b border-neutral-100"><span class="text-sm text-neutral-600">Taxa da plataforma</span><span class="text-sm font-semibold text-marca-700">8%</span></div>' +
+            '<div class="flex justify-between items-center py-2 border-b border-neutral-100"><span class="text-sm text-neutral-600">Mercado Pago</span><span class="badge badge-success text-xs">Conectado</span></div>' +
+            '<div class="flex justify-between items-center py-2 border-b border-neutral-100"><span class="text-sm text-neutral-600">Notificações push</span><span class="badge badge-success text-xs">Ativado</span></div>' +
+            '<div class="flex justify-between items-center py-2"><span class="text-sm text-neutral-600">Aprovação automática</span><span class="badge badge-danger text-xs">Desativado</span></div>' +
+            '<button onclick="toast(\'Configurações salvas!\', \'ok\'); fecharModal();" class="w-full btn btn-primary text-sm py-3 rounded-xl mt-3 active:scale-95">Salvar Alterações</button>' +
+          '</div>';
+          abrirModal(html, 'Configurações da Plataforma');
+        }
+
+        function painel_administrativo_abrirPagamentos() {
+          var html = '<div class="p-2 space-y-3">' +
+            '<div class="bg-marca-50 rounded-xl p-4 flex items-center gap-3">' +
+              '<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>' +
+              '<div><p class="text-sm font-semibold text-neutral-800">Mercado Pago</p><p class="text-xs text-green-600">Integração ativa</p></div>' +
+            '</div>' +
+            '<div class="flex justify-between items-center py-2 border-b border-neutral-100"><span class="text-sm text-neutral-600">Transações hoje</span><span class="text-sm font-bold text-neutral-900">341</span></div>' +
+            '<div class="flex justify-between items-center py-2 border-b border-neutral-100"><span class="text-sm text-neutral-600">Volume hoje</span><span class="text-sm font-bold text-marca-700">R$ 12.450,00</span></div>' +
+            '<div class="flex justify-between items-center py-2"><span class="text-sm text-neutral-600">Taxa processada</span><span class="text-sm font-bold text-neutral-900">R$ 996,00</span></div>' +
+            '<button onclick="toast(\'Relatório financeiro gerado!\', \'ok\'); fecharModal();" class="w-full btn btn-primary text-sm py-3 rounded-xl mt-3 active:scale-95">Gerar Relatório Financeiro</button>' +
+          '</div>';
+          abrirModal(html, 'Pagamentos — Mercado Pago');
+        }
+
+        // Inicialização
+        painel_administrativo_renderizarEstabelecimentos(painel_administrativo_estabelecimentos);
+        painel_administrativo_renderizarBanners();
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
