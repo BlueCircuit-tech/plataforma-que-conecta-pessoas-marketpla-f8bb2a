@@ -1333,6 +1333,173 @@
     </script>
 </section>
 
+    <section data-tela="pagamento-aprovado" class="hidden">
+      <div class="px-5 pt-4 pb-8 overflow-y-auto h-full">
+        <!-- Animação de sucesso -->
+        <div class="flex flex-col items-center justify-center pt-10 pb-6">
+          <div id="pagamento_aprovado_checkCircle" class="relative w-24 h-24 mb-4">
+            <svg class="w-24 h-24 -rotate-90">
+              <circle cx="48" cy="48" r="44" fill="none" stroke="#E5E5E5" stroke-width="6"/>
+              <circle id="pagamento_aprovado_progressRing" cx="48" cy="48" r="44" fill="none" stroke="#D4AF37" stroke-width="6" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="276.46" style="transition: stroke-dashoffset 1s ease-out 0.2s;"/>
+            </svg>
+            <svg class="absolute inset-0 w-24 h-24 flex items-center justify-center" viewBox="0 0 96 96">
+              <path id="pagamento_aprovado_checkMark" d="M28 50 L42 64 L68 38" fill="none" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="60" style="transition: stroke-dashoffset 0.6s ease-out 0.8s;"/>
+            </svg>
+          </div>
+          <h1 class="font-display text-2xl font-bold text-gray-900 text-center">Pedido Confirmado!</h1>
+          <p class="font-body text-sm text-gray-500 text-center mt-2 px-4">Seu pedido foi aprovado e enviado<br/>para o estabelecimento</p>
+        </div>
+
+        <!-- Badge do pedido -->
+        <div class="flex justify-center mb-5">
+          <span class="inline-flex items-center gap-2 bg-marca-100 text-marca-700 text-xs font-semibold px-4 py-2 rounded-full border border-marca-200">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+            Pedido #<span id="pagamento_aprovado_numeroPedido">10582</span>
+          </span>
+        </div>
+
+        <!-- Resumo do pedido -->
+        <div class="card p-4 mb-4">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-display font-semibold text-sm text-gray-900 truncate">Sabor & Brasa Churrascaria</p>
+              <p class="font-body text-xs text-gray-500 truncate">Av. Paulista, 1234 - Jardins</p>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-3 space-y-2">
+            <div class="flex justify-between items-center text-sm">
+              <span class="font-body text-gray-600">Picanha na brasa</span>
+              <span class="font-body text-gray-900 font-medium">R$ 89,90</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="font-body text-gray-600">Farofa especial</span>
+              <span class="font-body text-gray-900 font-medium">R$ 12,00</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="font-body text-gray-600">Refrigerante 600ml</span>
+              <span class="font-body text-gray-900 font-medium">R$ 8,50</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="font-body text-gray-600">Taxa de entrega</span>
+              <span class="font-body text-gray-900 font-medium">Grátis</span>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 mt-3 pt-3 flex justify-between items-center">
+            <span class="font-display font-semibold text-gray-900">Total</span>
+            <span class="font-display font-bold text-lg text-gray-900">R$ 110,40</span>
+          </div>
+        </div>
+
+        <!-- Forma de pagamento -->
+        <div class="card p-4 mb-4">
+          <p class="font-display font-semibold text-sm text-gray-900 mb-3">Forma de Pagamento</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><rect width="24" height="16" rx="2" fill="#00AFF0"/><rect x="2" y="4" width="20" height="2" fill="#5DC7FF"/><rect x="2" y="10" width="20" height="2" fill="#5DC7FF"/><rect x="2" y="14" width="8" height="2" fill="#5DC7FF"/><rect x="12" y="14" width="10" height="2" fill="#5DC7FF"/></svg>
+            </div>
+            <div>
+              <p class="font-body text-sm font-medium text-gray-900">Mercado Pago</p>
+              <p class="font-body text-xs text-gray-500">Cartão de crédito **** 4532</p>
+            </div>
+            <svg class="w-5 h-5 text-green-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Estimativa de entrega -->
+        <div class="card p-4 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2.5" stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <p class="font-body text-sm text-gray-500">Previsão de entrega</p>
+              <p class="font-display font-semibold text-gray-900" id="pagamento_aprovado_previsao">25 a 40 minutos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card do entregador -->
+        <div class="card p-4 mb-5 cursor-pointer" onclick="pagamento_aprovado_entregador()">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-700 to-gray-500 flex items-center justify-center text-white font-display font-bold text-sm flex-shrink-0">RC</div>
+            <div class="flex-1 min-w-0">
+              <p class="font-display font-semibold text-sm text-gray-900">Rodrigo Costa</p>
+              <div class="flex items-center gap-1 mt-0.5">
+                <svg class="w-3.5 h-3.5 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="font-body text-xs font-medium text-gray-700">4.8</span>
+                <span class="font-body text-xs text-gray-400">· 1.240 entregas</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="event.stopPropagation(); pagamento_aprovado_chamar()" class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center active:scale-90 transition-transform">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="space-y-3 mb-4">
+          <button onclick="mostrarTela('acompanhar-pedido')" class="btn w-full bg-marca-500 hover:bg-marca-600 text-white font-display font-semibold py-3.5 rounded-xl text-sm active:scale-[0.97] transition-all shadow-lg shadow-marca-500/20 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg>
+            Acompanhar Pedido
+          </button>
+          <button onclick="mostrarTela('tela-inicial')" class="btn w-full bg-white hover:bg-gray-50 text-gray-700 font-display font-semibold py-3.5 rounded-xl text-sm border border-gray-200 active:scale-[0.97] transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m7-7l7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            Voltar às Ofertas
+          </button>
+        </div>
+
+        <!-- Segurança -->
+        <p class="text-center font-body text-[11px] text-gray-400 leading-relaxed">
+          <svg class="w-3 h-3 inline-block mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Pagamento processado com segurança via Mercado Pago
+        </p>
+      </div>
+
+      <script>
+        (function() {
+          function initAnimacoes() {
+            var checkMark = document.getElementById('pagamento_aprovado_checkMark');
+            var progressRing = document.getElementById('pagamento_aprovado_progressRing');
+            if (!checkMark || !progressRing) return;
+            var numero = Math.floor(Math.random() * 90000) + 10000;
+            var pedidoEl = document.getElementById('pagamento_aprovado_numeroPedido');
+            if (pedidoEl) pedidoEl.textContent = numero;
+            setTimeout(function() {
+              if (progressRing) progressRing.style.strokeDashoffset = '0';
+            }, 100);
+            setTimeout(function() {
+              if (checkMark) checkMark.style.strokeDashoffset = '0';
+            }, 300);
+          }
+          function chamarEntregador() {
+            toast('Contato iniciado com Rodrigo Costa', 'info');
+          }
+          function detalhesEntregador() {
+            var html = '<div class="p-5 text-center">' +
+              '<div class="w-20 h-20 rounded-full bg-gradient-to-br from-gray-700 to-gray-500 flex items-center justify-center text-white font-display font-bold text-xl mx-auto mb-3">RC</div>' +
+              '<p class="font-display font-bold text-gray-900 text-lg">Rodrigo Costa</p>' +
+              '<div class="flex items-center justify-center gap-1 mt-1 mb-1"><svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><span class="font-body text-sm font-medium">4.8</span><span class="font-body text-xs text-gray-400">· 1.240 entregas</span></div>' +
+              '<div class="flex gap-3 mt-5 justify-center">' +
+              '<button onclick="pagamento_aprovado_chamar(); fecharModal();" class="bg-green-500 text-white font-body font-semibold text-sm px-6 py-3 rounded-xl active:scale-95 transition-transform flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>Ligar</button>' +
+              '<button onclick="pagamento_aprovado_chatar(); fecharModal();" class="bg-marca-500 text-white font-body font-semibold text-sm px-6 py-3 rounded-xl active:scale-95 transition-transform flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>Mensagem</button>' +
+              '</div></div>';
+            abrirModal(html, 'Entregador');
+          }
+          window.pagamento_aprovado_entregador = detalhesEntregador;
+          window.pagamento_aprovado_chamar = function() { toast('Ligando para Rodrigo Costa...', 'info'); };
+          window.pagamento_aprovado_chatar = function() { toast('Abrindo chat com Rodrigo...', 'info'); };
+          if (typeof initAnimacoes === 'function') { initAnimacoes(); }
+        })();
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
