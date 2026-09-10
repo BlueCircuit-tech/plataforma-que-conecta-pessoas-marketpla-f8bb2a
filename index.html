@@ -794,6 +794,370 @@
         </script>
     </section>
 
+    <section data-tela="detalhe-da-oferta" class="hidden">
+      <!-- Carrossel de Imagens -->
+      <div class="relative">
+        <div id="carrossel-container" class="relative w-full h-72 overflow-hidden bg-neutral-800">
+          <div id="carrossel-track" class="flex transition-transform duration-500 ease-out h-full">
+            <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-neutral-700 via-neutral-600 to-neutral-800 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-20 h-20 mx-auto text-marca-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+                <p class="text-neutral-400 text-sm mt-2 font-body">Burger Completo</p>
+              </div>
+            </div>
+            <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-neutral-600 via-amber-900/30 to-neutral-700 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-20 h-20 mx-auto text-marca-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+                <p class="text-neutral-400 text-sm mt-2 font-body">Batatas Rústicas</p>
+              </div>
+            </div>
+            <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-neutral-700 via-orange-900/30 to-neutral-800 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-20 h-20 mx-auto text-marca-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+                <p class="text-neutral-400 text-sm mt-2 font-body">Milkshake Artesanal</p>
+              </div>
+            </div>
+            <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-neutral-600 via-yellow-900/20 to-neutral-700 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-20 h-20 mx-auto text-marca-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+                <p class="text-neutral-400 text-sm mt-2 font-body">Combo Família</p>
+              </div>
+            </div>
+          </div>
+          <!-- Setas do carrossel -->
+          <button onclick="detalhe_da_oferta_carrosselAnterior()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center active:scale-90 transition-transform" aria-label="Imagem anterior">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button onclick="detalhe_da_oferta_carrosselProximo()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center active:scale-90 transition-transform" aria-label="Próxima imagem">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <!-- Indicadores -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5" id="carrossel-dots"></div>
+          <!-- Badge de desconto -->
+          <span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full font-body">-35%</span>
+          <!-- Botão favorito -->
+          <button onclick="detalhe_da_oferta_toggleFavorito()" id="btn-favorito" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center active:scale-90 transition-all shadow-lg">
+            <svg id="icone-favorito" class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal -->
+      <div class="px-5 pt-5 pb-28">
+        <!-- Nome e avaliação -->
+        <div class="mb-1">
+          <h1 class="font-display text-xl font-bold text-neutral-900 leading-tight">Burger Completo Artesanal com Batata e Refri</h1>
+        </div>
+        <div class="flex items-center gap-3 mt-2 mb-4">
+          <div class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <span class="text-sm font-semibold text-neutral-800 font-body">4.8</span>
+          <span class="text-sm text-neutral-500 font-body">(127 avaliações)</span>
+        </div>
+
+        <!-- Preço -->
+        <div class="flex items-end gap-3 mb-5">
+          <span class="text-3xl font-bold text-marca-600 font-display">R$ 45,90</span>
+          <span class="text-base text-neutral-400 line-through font-body">R$ 70,50</span>
+          <span class="badge bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full font-body">-35%</span>
+        </div>
+
+        <!-- Estabelecimento -->
+        <div onclick="detalhe_da_oferta_abrirEstabelecimento()" class="card flex items-center gap-3.5 p-3.5 mb-5 cursor-pointer active:scale-[0.98] transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-display font-bold text-lg">BH</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-display font-bold text-neutral-900 text-sm">Burger House</p>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <div class="flex items-center gap-0.5">
+                <svg class="w-3.5 h-3.5 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="text-xs font-semibold text-neutral-700 font-body">4.8</span>
+              </div>
+              <span class="text-xs text-neutral-400 font-body">·</span>
+              <span class="text-xs text-neutral-500 font-body">25-40 min</span>
+              <span class="text-xs text-neutral-400 font-body">·</span>
+              <span class="text-xs text-marca-600 font-semibold font-body">Grátis</span>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-neutral-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </div>
+
+        <!-- Quantidade -->
+        <div class="card p-4 mb-5">
+          <p class="text-xs text-neutral-500 uppercase tracking-wider font-body mb-3 font-semibold">Quantidade</p>
+          <div class="flex items-center gap-4">
+            <button onclick="detalhe_da_oferta_alterarQuantidade(-1)" class="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center active:scale-90 transition-all bg-white">
+              <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+            </button>
+            <span id="qtd-oferta" class="text-xl font-bold text-neutral-900 font-display min-w-[2rem] text-center">1</span>
+            <button onclick="detalhe_da_oferta_alterarQuantidade(1)" class="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center active:scale-90 transition-all bg-white">
+              <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="mb-6">
+          <h2 class="font-display font-bold text-neutral-900 text-base mb-2">Descrição</h2>
+          <p class="text-sm text-neutral-600 leading-relaxed font-body">Hambúrguer artesanal de 180g com blend exclusivo de carne angus, queijo cheddar derretido, alface americana, tomate, cebola caramelizada e molho especial da casa. Acompanha batatas rústicas com alecrim e refrigerante lata 350ml. Preparado na chapa com pão brioche artesanal tostado na manteiga.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full font-body">🥩 180g de carne</span>
+            <span class="badge bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full font-body">🧀 Cheddar</span>
+            <span class="badge bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full font-body">🍟 Batata rústica</span>
+            <span class="badge bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full font-body">🥤 Refrigerante</span>
+          </div>
+        </div>
+
+        <!-- Avaliações -->
+        <div class="mb-6">
+          <h2 class="font-display font-bold text-neutral-900 text-base mb-3">Avaliações</h2>
+          <div class="space-y-3">
+            <div class="card p-4">
+              <div class="flex items-center gap-2.5 mb-2">
+                <div class="w-9 h-9 rounded-full bg-marca-700 flex items-center justify-center flex-shrink-0">
+                  <span class="text-white text-xs font-bold font-body">MC</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-neutral-900 font-body">Maria Costa</p>
+                  <div class="flex items-center gap-0.5">
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  </div>
+                </div>
+                <span class="text-xs text-neutral-400 font-body ml-auto">há 2 dias</span>
+              </div>
+              <p class="text-sm text-neutral-600 font-body leading-relaxed">Incrível! O hambúrguer estava suculento e a batata crocante. Entrega super rápida. Recomendo muito!</p>
+            </div>
+            <div class="card p-4">
+              <div class="flex items-center gap-2.5 mb-2">
+                <div class="w-9 h-9 rounded-full bg-marca-600 flex items-center justify-center flex-shrink-0">
+                  <span class="text-white text-xs font-bold font-body">RS</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-neutral-900 font-body">Rafael Souza</p>
+                  <div class="flex items-center gap-0.5">
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  </div>
+                </div>
+                <span class="text-xs text-neutral-400 font-body ml-auto">há 5 dias</span>
+              </div>
+              <p class="text-sm text-neutral-600 font-body leading-relaxed">Muito bom, mas a entrega demorou um pouco mais que o esperado. O hambúrguer compensa!</p>
+            </div>
+            <div class="card p-4">
+              <div class="flex items-center gap-2.5 mb-2">
+                <div class="w-9 h-9 rounded-full bg-marca-800 flex items-center justify-center flex-shrink-0">
+                  <span class="text-white text-xs font-bold font-body">AP</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-neutral-900 font-body">Ana Paula</p>
+                  <div class="flex items-center gap-0.5">
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-3 h-3 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  </div>
+                </div>
+                <span class="text-xs text-neutral-400 font-body ml-auto">há 1 semana</span>
+              </div>
+              <p class="text-sm text-neutral-600 font-body leading-relaxed">Melhor combo da região! Entrega rápida e comida sempre quentinha. Virei cliente fiel!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ofertas relacionadas -->
+        <div class="mb-4">
+          <h2 class="font-display font-bold text-neutral-900 text-base mb-3">Ofertas Relacionadas</h2>
+          <div class="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 snap-x snap-mandatory scrollbar-hide" style="scrollbar-width:none;-ms-overflow-style:none;">
+            <div onclick="detalhe_da_oferta_abrirRelacionada('pizza')" class="card flex-shrink-0 w-44 snap-start cursor-pointer active:scale-[0.97] transition-transform">
+              <div class="h-28 rounded-t-xl bg-gradient-to-br from-red-800/40 to-orange-900/30 flex items-center justify-center">
+                <svg class="w-10 h-10 text-marca-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+              </div>
+              <div class="p-3">
+                <p class="text-xs font-semibold text-neutral-900 font-display leading-tight line-clamp-2">Pizza Grande + Refrigerante</p>
+                <span class="text-sm font-bold text-marca-600 font-display mt-1 block">R$ 39,90</span>
+              </div>
+            </div>
+            <div onclick="detalhe_da_oferta_abrirRelacionada('sushi')" class="card flex-shrink-0 w-44 snap-start cursor-pointer active:scale-[0.97] transition-transform">
+              <div class="h-28 rounded-t-xl bg-gradient-to-br from-rose-900/40 to-pink-900/30 flex items-center justify-center">
+                <svg class="w-10 h-10 text-marca-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+              </div>
+              <div class="p-3">
+                <p class="text-xs font-semibold text-neutral-900 font-display leading-tight line-clamp-2">Combo Sushi 20 peças</p>
+                <span class="text-sm font-bold text-marca-600 font-display mt-1 block">R$ 55,90</span>
+              </div>
+            </div>
+            <div onclick="detalhe_da_oferta_abrirRelacionada('acai')" class="card flex-shrink-0 w-44 snap-start cursor-pointer active:scale-[0.97] transition-transform">
+              <div class="h-28 rounded-t-xl bg-gradient-to-br from-purple-900/40 to-indigo-900/30 flex items-center justify-center">
+                <svg class="w-10 h-10 text-marca-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+              </div>
+              <div class="p-3">
+                <p class="text-xs font-semibold text-neutral-900 font-display leading-tight line-clamp-2">Açaí Premium 500ml</p>
+                <span class="text-sm font-bold text-marca-600 font-display mt-1 block">R$ 22,90</span>
+              </div>
+            </div>
+            <div onclick="detalhe_da_oferta_abrirRelacionada('salada')" class="card flex-shrink-0 w-44 snap-start cursor-pointer active:scale-[0.97] transition-transform">
+              <div class="h-28 rounded-t-xl bg-gradient-to-br from-green-900/40 to-emerald-900/30 flex items-center justify-center">
+                <svg class="w-10 h-10 text-marca-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.15-1.546.45a3.5 3.5 0 01-4.953-4.953c.3-.5.45-1.023.45-1.546A3.5 3.5 0 0012 7.096 3.5 3.5 0 008.546 9.5c0 .523.15 1.046.45 1.546a3.5 3.5 0 01-4.953 4.953c-.5-.3-1.023-.45-1.546-.45A3.5 3.5 0 010 15.546a3.5 3.5 0 003.5 3.5h13a3.5 3.5 0 003.5-3.5z"/></svg>
+              </div>
+              <div class="p-3">
+                <p class="text-xs font-semibold text-neutral-900 font-display leading-tight line-clamp-2">Salada Caesar Completa</p>
+                <span class="text-sm font-bold text-marca-600 font-display mt-1 block">R$ 28,90</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de ação fixa -->
+      <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-100 px-5 py-3.5 z-40">
+        <div class="flex gap-3">
+          <button onclick="detalhe_da_oferta_abrirChat()" class="flex-1 bg-neutral-900 text-white font-display font-bold text-sm py-3.5 rounded-xl active:scale-95 transition-all flex items-center justify-center gap-2 hover:bg-neutral-800">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            Chat
+          </button>
+          <button onclick="detalhe_da_oferta_adicionarCarrinho()" class="flex-[2] bg-marca-600 text-white font-display font-bold text-sm py-3.5 rounded-xl active:scale-95 transition-all flex items-center justify-center gap-2 hover:bg-marca-700 shadow-lg shadow-marca-600/20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+            <span id="btn-carrinho-texto">Adicionar ao Carrinho</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Botão flutuante WhatsApp -->
+      <button onclick="detalhe_da_oferta_abrirWhatsApp()" class="fixed bottom-24 right-5 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-xl shadow-green-500/30 active:scale-90 transition-all z-50 hover:bg-green-600">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </button>
+
+      <script>
+      (function() {
+        var indiceCarrossel = 0;
+        var totalImagens = 4;
+        var qtd = 1;
+        var favorito = false;
+
+        function init() {
+          atualizarDots();
+          iniciarAutoPlay();
+        }
+
+        function iniciarAutoPlay() {
+          window._carrosselTimer = setInterval(function() {
+            indiceCarrossel = (indiceCarrossel + 1) % totalImagens;
+            atualizarCarrossel();
+          }, 4000);
+        }
+
+        function atualizarCarrossel() {
+          var track = document.getElementById('carrossel-track');
+          if (track) {
+            track.style.transform = 'translateX(-' + (indiceCarrossel * 100) + '%)';
+          }
+          atualizarDots();
+        }
+
+        function atualizarDots() {
+          var dotsContainer = document.getElementById('carrossel-dots');
+          if (!dotsContainer) return;
+          dotsContainer.innerHTML = '';
+          for (var i = 0; i < totalImagens; i++) {
+            var dot = document.createElement('div');
+            dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === indiceCarrossel ? 'bg-white w-5' : 'bg-white/50');
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        window.detalhe_da_oferta_carrosselAnterior = function() {
+          clearInterval(window._carrosselTimer);
+          indiceCarrossel = (indiceCarrossel - 1 + totalImagens) % totalImagens;
+          atualizarCarrossel();
+          iniciarAutoPlay();
+        };
+
+        window.detalhe_da_oferta_carrosselProximo = function() {
+          clearInterval(window._carrosselTimer);
+          indiceCarrossel = (indiceCarrossel + 1) % totalImagens;
+          atualizarCarrossel();
+          iniciarAutoPlay();
+        };
+
+        window.detalhe_da_oferta_alterarQuantidade = function(delta) {
+          qtd = qtd + delta;
+          if (qtd < 1) qtd = 1;
+          if (qtd > 99) qtd = 99;
+          var el = document.getElementById('qtd-oferta');
+          if (el) el.textContent = qtd;
+        };
+
+        window.detalhe_da_oferta_toggleFavorito = function() {
+          favorito = !favorito;
+          var btn = document.getElementById('btn-favorito');
+          var icone = document.getElementById('icone-favorito');
+          if (favorito) {
+            btn.classList.add('border-2', 'border-marca-500');
+            icone.classList.remove('text-neutral-400');
+            icone.classList.add('text-red-500');
+            icone.setAttribute('fill', 'currentColor');
+            toast('Adicionado aos favoritos', 'ok');
+          } else {
+            btn.classList.remove('border-2', 'border-marca-500');
+            icone.classList.add('text-neutral-400');
+            icone.classList.remove('text-red-500');
+            icone.setAttribute('fill', 'none');
+            toast('Removido dos favoritos', 'info');
+          }
+        };
+
+        window.detalhe_da_oferta_adicionarCarrinho = function() {
+          var btnTexto = document.getElementById('btn-carrinho-texto');
+          if (btnTexto) {
+            btnTexto.textContent = 'Adicionando...';
+          }
+          setTimeout(function() {
+            if (btnTexto) {
+              btnTexto.textContent = 'Adicionar ao Carrinho';
+            }
+            toast(qtd + 'x Burger Completo adicionado ao carrinho', 'ok');
+            mostrarTela('carrinho-e-checkout');
+          }, 500);
+        };
+
+        window.detalhe_da_oferta_abrirChat = function() {
+          var html = '<div class="p-6"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center"><span class="text-white font-bold text-sm">BH</span></div><div><p class="font-display font-bold text-sm text-neutral-900">Burger House</p><span class="badge bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">Online agora</span></div></div><div class="space-y-3"><div class="bg-neutral-100 rounded-2xl rounded-tl-sm p-3 max-w-[80%]"><p class="text-sm text-neutral-700 font-body">Olá! Bem-vindo ao Burger House. Como posso ajudar?</p><span class="text-xs text-neutral-400 mt-1 block">agora</span></div></div><div class="mt-4 flex gap-2"><input type="text" placeholder="Digite sua mensagem..." class="flex-1 bg-neutral-100 rounded-full px-4 py-2.5 text-sm text-neutral-800 font-body focus:outline-none focus:ring-2 focus:ring-marca-500" /><button class="w-10 h-10 rounded-full bg-marca-600 flex items-center justify-center active:scale-90 transition-transform"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg></button></div></div>';
+          abrirModal(html, 'Chat - Burger House');
+        };
+
+        window.detalhe_da_oferta_abrirEstabelecimento = function() {
+          var html = '<div class="p-6"><div class="flex items-center gap-4 mb-4"><div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center"><span class="text-white font-display font-bold text-xl">BH</span></div><div><p class="font-display font-bold text-neutral-900">Burger House</p><div class="flex items-center gap-1 mt-0.5"><svg class="w-4 h-4 text-marca-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><span class="text-sm font-semibold text-neutral-700">4.8 (127 avaliações)</span></div></div></div><div class="space-y-2 text-sm text-neutral-600 font-body"><div class="flex items-center gap-2"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Aberto agora · Fecha às 23:00</span></div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Av. Paulista, 1500 - São Paulo, SP</span></div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Taxa de entrega: Grátis · 25-40 min</span></div></div></div>';
+          abrirModal(html, 'Burger House');
+        };
+
+        window.detalhe_da_oferta_abrirRelacionada = function(tipo) {
+          var nomes = { pizza: 'Pizza Grande + Refrigerante', sushi: 'Combo Sushi 20 peças', acai: 'Açaí Premium 500ml', salada: 'Salada Caesar Completa' };
+          toast('Abrindo detalhe: ' + (nomes[tipo] || tipo), 'info');
+        };
+
+        window.detalhe_da_oferta_abrirWhatsApp = function() {
+          toast('Abrindo WhatsApp para contato com o estabelecimento...', 'info');
+        };
+
+        init();
+      })();
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
