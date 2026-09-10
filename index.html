@@ -1762,6 +1762,290 @@ function acompanhar_pedido_fecharModalItem() {
 }
 </script>
 
+    <section data-tela="meus-pedidos" class="hidden">
+      <div class="px-5 pt-4 pb-2">
+        <h1 class="font-display text-[22px] font-bold" style="color:#0A0A0A">Meus Pedidos</h1>
+        <p class="font-body text-[13px] mt-0.5" style="color:#888">Acompanhe e gerencie seus pedidos</p>
+      </div>
+
+      <div class="px-5 mb-3">
+        <div class="flex items-center bg-white rounded-xl px-4 py-2.5 border border-gray-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="busca-pedidos" placeholder="Buscar loja ou pedido..." oninput="meus_pedidos_buscar(this.value)" class="flex-1 text-[13px] font-body outline-none ml-2.5" style="color:#0A0A0A">
+        </div>
+      </div>
+
+      <div class="flex px-5 gap-2 mb-4">
+        <button onclick="meus_pedidos_trocarAba('andamento')" id="tab-andamento" class="tab-ativa flex-1 py-2 rounded-lg text-[12px] font-semibold font-body transition-all duration-200" style="background:#D4AF37;color:#0A0A0A">Em andamento</button>
+        <button onclick="meus_pedidos_trocarAba('historico')" id="tab-historico" class="flex-1 py-2 rounded-lg text-[12px] font-semibold font-body transition-all duration-200 bg-white border border-gray-100" style="color:#888">Histórico</button>
+        <button onclick="meus_pedidos_trocarAba('cancelados')" id="tab-cancelados" class="flex-1 py-2 rounded-lg text-[12px] font-semibold font-body transition-all duration-200 bg-white border border-gray-100" style="color:#888">Cancelados</button>
+      </div>
+
+      <div id="lista-pedidos" class="px-5 space-y-3 pb-24"></div>
+
+      <div id="empty-andamento" class="hidden px-5 pb-24">
+        <div class="flex flex-col items-center justify-center pt-16">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#0A0A0A,#1a1a1a)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+          </div>
+          <p class="font-display font-bold text-base" style="color:#0A0A0A">Nenhum pedido em andamento</p>
+          <p class="font-body text-xs mt-1 text-center" style="color:#999">Quando você fizer um pedido, ele aparecerá aqui</p>
+          <button onclick="mostrarTela('tela-inicial')" class="mt-5 px-6 py-2.5 rounded-xl text-[13px] font-semibold font-body active:scale-95 transition-all" style="background:#D4AF37;color:#0A0A0A">Ver ofertas</button>
+        </div>
+      </div>
+
+      <div id="empty-historico" class="hidden px-5 pb-24">
+        <div class="flex flex-col items-center justify-center pt-16">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#0A0A0A,#1a1a1a)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg>
+          </div>
+          <p class="font-display font-bold text-base" style="color:#0A0A0A">Nenhum pedido no histórico</p>
+          <p class="font-body text-xs mt-1 text-center" style="color:#999">Seus pedidos concluídos aparecerão aqui</p>
+          <button onclick="mostrarTela('tela-inicial')" class="mt-5 px-6 py-2.5 rounded-xl text-[13px] font-semibold font-body active:scale-95 transition-all" style="background:#D4AF37;color:#0A0A0A">Explorar ofertas</button>
+        </div>
+      </div>
+
+      <div id="empty-cancelados" class="hidden px-5 pb-24">
+        <div class="flex flex-col items-center justify-center pt-16">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#0A0A0A,#1a1a1a)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="font-display font-bold text-base" style="color:#0A0A0A">Pedidos cancelados</p>
+          <p class="font-body text-xs mt-1 text-center" style="color:#999">Pedidos cancelados aparecerão aqui</p>
+        </div>
+      </div>
+
+      <button onclick="meus_pedidos_abrirFiltros()" class="fixed z-40 bottom-6 right-5 w-12 h-12 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-all" style="background:#D4AF37">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/><circle cx="8" cy="6" r="2" fill="#0A0A0A"/><circle cx="16" cy="12" r="2" fill="#0A0A0A"/><circle cx="11" cy="18" r="2" fill="#0A0A0A"/></svg>
+      </button>
+
+      <script>
+        const pedidos = [
+          { id:1, loja:"Hamburgueria do João", lojaIniciais:"HJ", lojaCor:"bg-orange-500", data:"2025-01-18", dataLabel:"Hoje, 14:32", status:"em_preparo", valor:47.90, frete:5.00, itens:[{nome:"Smash Burger Duplo",qtd:1,valor:32.90},{nome:"Batata Frita Grande",qtd:1,valor:15.00}], categoria:"andamento" },
+          { id:2, loja:"Pizzaria Napoli", lojaIniciais:"PN", lojaCor:"bg-red-500", data:"2025-01-18", dataLabel:"Hoje, 13:15", status:"a_caminho", valor:89.90, frete:7.00, itens:[{nome:"Pizza Margherita Média",qtd:1,valor:59.90},{nome:"Refrigerante 2L",qtd:1,valor:12.00},{nome:"Borda de Catupiry",qtd:1,valor:8.00}], categoria:"andamento" },
+          { id:3, loja:"Sushi House", lojaIniciais:"SH", lojaCor:"bg-rose-500", data:"2025-01-16", dataLabel:"16/01, 20:45", status:"entregue", valor:120.00, frete:8.00, itens:[{nome:"Combinado Premium",qtd:1,valor:85.00},{nome:"Hot Roll 10 peças",qtd:1,valor:35.00}], categoria:"historico", avaliado:false },
+          { id:4, loja:"Café Aroma", lojaIniciais:"CA", lojaCor:"bg-amber-700", data:"2025-01-15", dataLabel:"15/01, 10:20", status:"entregue", valor:23.50, frete:0, itens:[{nome:"Cappuccino",qtd:1,valor:14.50},{nome:"Pão de Queijo x3",qtd:1,valor:9.00}], categoria:"historico", avaliado:true },
+          { id:5, loja:"Açaí da Praia", lojaIniciais:"AP", lojaCor:"bg-purple-600", data:"2025-01-13", dataLabel:"13/01, 16:50", status:"entregue", valor:38.90, frete:3.50, itens:[{nome:"Açaí 500ml",qtd:1,valor:28.90},{nome:"Granola Extra",qtd:1,valor:10.00}], categoria:"historico", avaliado:false },
+          { id:6, loja:"Padaria Central", lojaIniciais:"PC", lojaCor:"bg-yellow-600", data:"2025-01-11", dataLabel:"11/01, 07:30", status:"entregue", valor:18.90, frete:0, itens:[{nome:"Pão Francês 6un",qtd:1,valor:9.00},{nome:"Café com Leite",qtd:1,valor:5.90},{nome:"Suco de Laranja",qtd:1,valor:4.00}], categoria:"historico", avaliado:true },
+          { id:7, loja:"Restaurante Sabor Caseiro", lojaIniciais:"RS", lojaCor:"bg-green-700", data:"2025-01-09", dataLabel:"09/01, 12:15", status:"entregue", valor:95.00, frete:6.00, itens:[{nome:"Feijoada Completa",qtd:1,valor:62.00},{nome:"Arroz e Farofa",qtd:1,valor:18.00},{nome:"Suco Natural",qtd:1,valor:15.00}], categoria:"historico", avaliado:false },
+          { id:8, loja:"Sorveteria Gelato", lojaIniciais:"SG", lojaCor:"bg-teal-500", data:"2025-01-07", dataLabel:"07/01, 19:00", status:"entregue", valor:32.00, frete:4.00, itens:[{nome:"Sorvete Artesanal 2 bolas",qtd:1,valor:22.00},{nome:"Casquinha Crocante",qtd:1,valor:10.00}], categoria:"historico", avaliado:true },
+          { id:9, loja:"Churrascaria Gaúcha", lojaIniciais:"CG", lojaCor:"bg-red-800", data:"2025-01-05", dataLabel:"05/01, 19:30", status:"cancelado", valor:95.00, frete:5.00, itens:[{nome:"Espetinho Coração",qtd:2,valor:45.00},{nome:"Farofa de Bacon",qtd:1,valor:12.00},{nome:"Cerveja Artesanal",qtd:2,valor:38.00}], categoria:"cancelados", motivoCancelamento:"Pedido cancelado pelo estabelecimento" },
+          { id:10, loja:"Empada Brasil", lojaIniciais:"EB", lojaCor:"bg-yellow-700", data:"2025-01-03", dataLabel:"03/01, 12:00", status:"cancelado", valor:22.50, frete:3.00, itens:[{nome:"Empada de Frango",qtd:3,valor:22.50}], categoria:"cancelados", motivoCancelamento:"Pedido cancelado a pedido do cliente" }
+        ];
+
+        let abaAtiva = "andamento";
+        let pedidoExpandido = null;
+        let filtrosAtivos = {};
+
+        function meus_pedidos_trocarAba(aba) {
+          abaAtiva = aba;
+          pedidoExpandido = null;
+          document.querySelectorAll('[id^="tab-"]').forEach(function(t) {
+            t.style.background = "#fff";
+            t.style.color = "#888";
+            t.style.border = "1px solid #f0f0f0";
+          });
+          var ativo = document.getElementById("tab-" + aba);
+          ativo.style.background = "#D4AF37";
+          ativo.style.color = "#0A0A0A";
+          ativo.style.border = "1px solid #D4AF37";
+          document.getElementById("lista-pedidos").classList.add("hidden");
+          document.getElementById("empty-andamento").classList.add("hidden");
+          document.getElementById("empty-historico").classList.add("hidden");
+          document.getElementById("empty-cancelados").classList.add("hidden");
+          meus_pedidos_renderLista(aba);
+        }
+
+        function meus_pedidos_statusInfo(status) {
+          if (status === "entregue") return { texto:"Entregue", cor:"bg-green-100 text-green-700", borda:"border-green-200", icone:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>' };
+          if (status === "em_preparo") return { texto:"Em preparo", cor:"bg-amber-100 text-amber-700", borda:"border-amber-200", icone:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>' };
+          if (status === "a_caminho") return { texto:"A caminho", cor:"bg-blue-100 text-blue-700", borda:"border-blue-200", icone:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>' };
+          return { texto:"Cancelado", cor:"bg-red-100 text-red-600", borda:"border-red-200", icone:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' };
+        }
+
+        function meus_pedidos_renderLista(aba, filtroQuery) {
+          filtroQuery = filtroQuery || "";
+          var lista = pedidos.filter(function(p) {
+            if (p.categoria !== aba) return false;
+            if (filtroQuery && p.loja.toLowerCase().indexOf(filtroQuery.toLowerCase()) === -1 && ("#" + p.id).indexOf(filtroQuery) === -1) return false;
+            return true;
+          });
+          var container = document.getElementById("lista-pedidos");
+          var emptyMap = { andamento:"empty-andamento", historico:"empty-historico", cancelados:"empty-cancelados" };
+          container.classList.add("hidden");
+          document.getElementById(emptyMap[aba]).classList.add("hidden");
+          if (lista.length === 0) {
+            document.getElementById(emptyMap[aba]).classList.remove("hidden");
+            return;
+          }
+          container.classList.remove("hidden");
+          container.innerHTML = lista.map(function(p) {
+            var si = meus_pedidos_statusInfo(p.status);
+            var expandido = pedidoExpandido === p.id;
+            var valorTotal = p.valor + p.frete;
+            return '<div class="card bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-200" style="box-shadow:0 1px 3px rgba(0,0,0,0.04)">' +
+              '<div class="p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="meus_pedidos_expandir(' + p.id + ')">' +
+                '<div class="flex items-start gap-3">' +
+                  '<div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ' + p.lojaCor + '">' +
+                    '<span class="font-display font-bold text-white text-[13px]">' + p.lojaIniciais + '</span>' +
+                  '</div>' +
+                  '<div class="flex-1 min-w-0">' +
+                    '<div class="flex items-center justify-between">' +
+                      '<h3 class="font-display font-bold text-[14px] truncate" style="color:#0A0A0A">' + p.loja + '</h3>' +
+                      '<span class="text-[13px] font-bold font-body ml-2" style="color:#0A0A0A">' + brl(p.valor) + '</span>' +
+                    '</div>' +
+                    '<div class="flex items-center justify-between mt-1">' +
+                      '<span class="font-body text-[11px]" style="color:#999">' + p.dataLabel + '</span>' +
+                      '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ' + si.cor + ' ' + si.borda + '">' + si.icone + si.texto + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                  '<svg class="flex-shrink-0 ml-1 transition-transform duration-200 ' + (expandido ? 'rotate-180' : '') + '" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>' +
+                '</div>' +
+              '</div>' +
+              (expandido ? meus_pedidos_detalhes(p) : '') +
+            '</div>';
+          }).join('');
+        }
+
+        function meus_pedidos_detalhes(p) {
+          var si = meus_pedidos_statusInfo(p.status);
+          var itensHTML = p.itens.map(function(item) {
+            return '<div class="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">' +
+              '<div class="flex items-center gap-3">' +
+                '<div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#F5F5F5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#BBB" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>' +
+                '<div><p class="font-body text-[13px] font-medium" style="color:#0A0A0A">' + item.nome + '</p><p class="font-body text-[11px]" style="color:#999">Qtd: ' + item.qtd + '</p></div>' +
+              '</div>' +
+              '<span class="font-body text-[13px] font-semibold" style="color:#0A0A0A">' + brl(item.valor) + '</span>' +
+            '</div>';
+          }).join("");
+
+          var botoes = "";
+          if (p.status === "entregue") {
+            if (!p.avaliado) {
+              botoes += '<button onclick="event.stopPropagation();meus_pedidos_avaliar(' + p.id + ')" class="flex-1 py-2.5 rounded-xl text-[12px] font-semibold font-body active:scale-95 transition-all flex items-center justify-center gap-1.5" style="background:#0A0A0A;color:#FAFAFA"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Avaliar</button>';
+            }
+            botoes += '<button onclick="event.stopPropagation();meus_pedidos_reordenar(' + p.id + ')" class="flex-1 py-2.5 rounded-xl text-[12px] font-semibold font-body active:scale-95 transition-all flex items-center justify-center gap-1.5 border" style="border-color:#D4AF37;color:#D4AF37"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Reordenar</button>';
+          }
+          if (p.status === "cancelado" && p.motivoCancelamento) {
+            botoes += '<button onclick="event.stopPropagation();mostrarTela(\'area-do-anunciante\')" class="w-full py-2.5 rounded-xl text-[12px] font-semibold font-body active:scale-95 transition-all" style="background:#F5F5F5;color:#666">Ver outros estabelecimentos</button>';
+          }
+
+          return '<div class="px-4 pb-4 pt-1 border-t border-gray-50" onclick="event.stopPropagation()">' +
+            '<div class="mt-3 mb-2 flex items-center gap-2">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="16" y1="3" x2="16" y2="21"/></svg>' +
+              '<span class="font-body text-[11px] font-semibold uppercase tracking-wide" style="color:#999">Itens do pedido</span>' +
+              '<span class="font-body text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">#' + String(p.id).padStart(4,"0") + '</span>' +
+            '</div>' +
+            '<div class="space-y-1">' + itensHTML + '</div>' +
+            '<div class="mt-3 space-y-1.5">' +
+              '<div class="flex justify-between text-[12px] font-body"><span style="color:#999">Subtotal</span><span style="color:#666">' + brl(p.valor) + '</span></div>' +
+              '<div class="flex justify-between text-[12px] font-body"><span style="color:#999">Entrega</span><span style="color:#666">' + (p.frete === 0 ? '<span style="color:green">Grátis</span>' : brl(p.frete)) + '</span></div>' +
+              '<div class="flex justify-between text-[14px] font-body font-bold pt-1.5 border-t border-gray-100" style="color:#0A0A0A"><span>Total</span><span>' + brl(valorTotal) + '</span></div>' +
+            '</div>' +
+            (p.motivoCancelamento ? '<div class="mt-3 p-2.5 rounded-lg bg-red-50 border border-red-100"><p class="font-body text-[11px]" style="color:#c44"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:inline;vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' + p.motivoCancelamento + '</p></div>' : '') +
+            (botoes ? '<div class="flex gap-2 mt-3">' + botoes + '</div>' : '') +
+          '</div>';
+        }
+
+        function meus_pedidos_expandir(id) {
+          pedidoExpandido = pedidoExpandido === id ? null : id;
+          meus_pedidos_renderLista(abaAtiva, document.getElementById("busca-pedidos").value);
+        }
+
+        function meus_pedidos_avaliar(id) {
+          var p = pedidos.find(function(x){return x.id === id;});
+          if (!p) return;
+          var html = '<div class="px-2">' +
+            '<p class="font-body text-sm text-center mb-4" style="color:#666">Como foi sua experiência na <strong>' + p.loja + '</strong>?</p>' +
+            '<div class="flex justify-center gap-3 mb-4" id="estrelas-avaliacao">' +
+              [1,2,3,4,5].map(function(i) {
+                return '<button onclick="meus_pedidos_setEstrela(' + i + ')" class="estrela-btn transition-all duration-150 active:scale-90" data-estrela="' + i + '"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DDD" stroke-width="1.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>';
+              }).join("") +
+            '</div>' +
+            '<textarea id="comentario-avaliacao" placeholder="Conte como foi sua experiência..." rows="3" class="w-full rounded-xl border border-gray-200 p-3 text-sm font-body outline-none resize-none" style="color:#0A0A0A"></textarea>' +
+            '<button onclick="meus_pedidos_enviarAvaliacao(' + id + ')" class="w-full mt-3 py-3 rounded-xl text-[13px] font-semibold font-body active:scale-95 transition-all" style="background:#D4AF37;color:#0A0A0A">Enviar avaliação</button>' +
+          '</div>';
+          abrirModal(html, "Avaliar pedido #" + String(id).padStart(4,"0"));
+        }
+
+        function meus_pedidos_setEstrela(qtd) {
+          document.querySelectorAll(".estrela-btn svg").forEach(function(s, i) {
+            s.setAttribute("fill", i < qtd ? "#D4AF37" : "none");
+            s.setAttribute("stroke", i < qtd ? "#D4AF37" : "#DDD");
+          });
+          document.querySelectorAll(".estrela-btn").forEach(function(b, i) {
+            b.style.transform = i < qtd ? "scale(1.15)" : "scale(1)";
+          });
+        }
+
+        function meus_pedidos_enviarAvaliacao(id) {
+          var p = pedidos.find(function(x){return x.id === id;});
+          if (p) p.avaliado = true;
+          fecharModal();
+          toast("Avaliação enviada! Obrigado pelo feedback.", "ok");
+          meus_pedidos_renderLista(abaAtiva, document.getElementById("busca-pedidos").value);
+        }
+
+        function meus_pedidos_reordenar(id) {
+          toast("Itens adicionados ao carrinho!", "ok");
+          setTimeout(function() { mostrarTela("carrinho-e-checkout"); }, 600);
+        }
+
+        function meus_pedidos_buscar(query) {
+          meus_pedidos_renderLista(abaAtiva, query);
+        }
+
+        function meus_pedidos_abrirFiltros() {
+          var html = '<div class="p-1">' +
+            '<div class="mb-4">' +
+              '<label class="font-body text-[13px] font-semibold block mb-2" style="color:#0A0A0A">Período</label>' +
+              '<div class="flex gap-2">' +
+                '<select id="filtro-periodo" class="flex-1 rounded-xl border border-gray-200 px-3 py-2.5 text-[12px] font-body outline-none" style="color:#0A0A0A">' +
+                  '<option value="">Todos</option><option value="7">Últimos 7 dias</option><option value="30">Último mês</option><option value="90">Últimos 3 meses</option>' +
+                '</select>' +
+              '</div>' +
+            '</div>' +
+            '<div class="mb-4">' +
+              '<label class="font-body text-[13px] font-semibold block mb-2" style="color:#0A0A0A">Valor mínimo</label>' +
+              '<input type="number" id="filtro-valor-min" placeholder="R$ 0,00" class="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-[12px] font-body outline-none" style="color:#0A0A0A">' +
+            '</div>' +
+            '<div class="mb-5">' +
+              '<label class="font-body text-[13px] font-semibold block mb-2" style="color:#0A0A0A">Status do pedido</label>' +
+              '<div class="space-y-2">' +
+                '<label class="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" value="entregue" class="filtro-status w-4 h-4 rounded accent-[#D4AF37]"><span class="font-body text-[12px]" style="color:#666">Entregue</span></label>' +
+                '<label class="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" value="em_preparo" class="filtro-status w-4 h-4 rounded accent-[#D4AF37]"><span class="font-body text-[12px]" style="color:#666">Em preparo</span></label>' +
+                '<label class="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" value="a_caminho" class="filtro-status w-4 h-4 rounded accent-[#D4AF37]"><span class="font-body text-[12px]" style="color:#666">A caminho</span></label>' +
+              '</div>' +
+            '</div>' +
+            '<div class="flex gap-2">' +
+              '<button onclick="meus_pedidos_limparFiltros()" class="flex-1 py-2.5 rounded-xl text-[12px] font-semibold font-body border border-gray-200 active:scale-95 transition-all" style="color:#666">Limpar</button>' +
+              '<button onclick="meus_pedidos_aplicarFiltros()" class="flex-1 py-2.5 rounded-xl text-[12px] font-semibold font-body active:scale-95 transition-all" style="background:#D4AF37;color:#0A0A0A">Aplicar filtros</button>' +
+            '</div>' +
+          '</div>';
+          abrirModal(html, "Filtros");
+        }
+
+        function meus_pedidos_aplicarFiltros() {
+          fecharModal();
+          toast("Filtros aplicados com sucesso!", "ok");
+        }
+
+        function meus_pedidos_limparFiltros() {
+          document.getElementById("filtro-periodo").value = "";
+          document.getElementById("filtro-valor-min").value = "";
+          document.querySelectorAll(".filtro-status").forEach(function(c) { c.checked = false; });
+          fecharModal();
+          toast("Filtros removidos.", "info");
+        }
+
+        document.getElementById("busca-pedidos").addEventListener("keydown", function(e) {
+          if (e.key === "Escape") { this.value = ""; meus_pedidos_renderLista(abaAtiva, ""); this.blur(); }
+        });
+
+        meus_pedidos_renderLista("andamento");
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
