@@ -2464,6 +2464,607 @@ function acompanhar_pedido_fecharModalItem() {
       </script>
     </section>
 
+    <section data-tela="area-do-anunciante" class="hidden">
+      <script>
+        function area_do_anunciante_init() {
+          const ofertas = [
+            { id: 1, nome: 'Hambúrguer Artesanal Duplo', precoOriginal: 42.90, precoPromo: 29.90, validade: '2025-08-20', status: 'ativo', visualizacoes: 1247, pedidos: 89, imagem: null },
+            { id: 2, nome: 'Pizza Grande Mista 4 Queijos', precoOriginal: 67.90, precoPromo: 49.90, validade: '2025-08-18', status: 'ativo', visualizacoes: 892, pedidos: 45, imagem: null },
+            { id: 3, nome: 'Açaí 500ml + Nutella', precoOriginal: 28.90, precoPromo: 18.90, validade: '2025-08-15', status: 'ativo', visualizacoes: 634, pedidos: 32, imagem: null },
+            { id: 4, nome: 'Sushi Combo 20 peças', precoOriginal: 89.90, precoPromo: 64.90, validade: '2025-08-22', status: 'ativo', visualizacoes: 2103, pedidos: 156, imagem: null },
+            { id: 5, nome: 'Café da Manhã Completo', precoOriginal: 35.00, precoPromo: 24.90, validade: '2025-08-10', status: 'pausado', visualizacoes: 456, pedidos: 12, imagem: null },
+            { id: 6, nome: 'Suco Natural 500ml + Sanduíche', precoOriginal: 22.00, precoPromo: 15.90, validade: '2025-08-25', status: 'ativo', visualizacoes: 321, pedidos: 18, imagem: null },
+            { id: 7, nome: 'Esfiha de Carne 6 unidades', precoOriginal: 25.00, precoPromo: 17.90, validade: '2025-08-12', status: 'encerrado', visualizacoes: 178, pedidos: 5, imagem: null },
+            { id: 8, nome: 'Torta de Limão Fatia + Café', precoOriginal: 18.00, precoPromo: 12.90, validade: '2025-08-19', status: 'ativo', visualizacoes: 567, pedidos: 28, imagem: null }
+          ];
+
+          const banners = [
+            { id: 1, nome: 'Banner Principal - Promoção Agosto', status: 'ativo', impressoes: 5432, cliques: 312 },
+            { id: 2, nome: 'Banner Lateral - Novos Sabores', status: 'ativo', impressoes: 2100, cliques: 145 },
+            { id: 3, nome: 'Banner Rodapé - Frete Grátis', status: 'pendente', impressoes: 0, cliques: 0 },
+            { id: 4, nome: 'Banner Storie - Combo Semanal', status: 'ativo', impressoes: 3890, cliques: 267 }
+          ];
+
+          const chartData = [35, 52, 48, 71, 64, 88, 75];
+          const diasSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+
+          function renderCards() {
+            const ofertasAtivas = ofertas.filter(o => o.status === 'ativo').length;
+            const visualizacoesSemana = ofertas.reduce((s, o) => s + o.visualizacoes, 0);
+            const pedidosTotal = ofertas.reduce((s, o) => s + o.pedidos, 0);
+            const faturamento = ofertas.reduce((s, o) => s + (o.pedidos * o.precoPromo), 0);
+
+            document.getElementById('card-ofertas-ativas').innerHTML = `
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ofertas Ativas</span>
+                <div class="w-8 h-8 rounded-lg bg-marca-500/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                </div>
+              </div>
+              <div class="text-3xl font-display font-bold text-white">${ofertasAtivas}</div>
+              <div class="flex items-center gap-1 mt-1">
+                <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <span class="text-xs text-green-400 font-medium">+2 esta semana</span>
+              </div>
+            `;
+
+            document.getElementById('card-visualizacoes').innerHTML = `
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">Visualizações</span>
+                <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+              </div>
+              <div class="text-3xl font-display font-bold text-white">${visualizacoesSemana.toLocaleString('pt-BR')}</div>
+              <div class="flex items-center gap-1 mt-1">
+                <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <span class="text-xs text-green-400 font-medium">+18.3%</span>
+              </div>
+            `;
+
+            document.getElementById('card-pedidos').innerHTML = `
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">Pedidos</span>
+                <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                </div>
+              </div>
+              <div class="text-3xl font-display font-bold text-white">${pedidosTotal}</div>
+              <div class="flex items-center gap-1 mt-1">
+                <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <span class="text-xs text-green-400 font-medium">+8 esta semana</span>
+              </div>
+            `;
+
+            document.getElementById('card-faturamento').innerHTML = `
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">Faturamento</span>
+                <div class="w-8 h-8 rounded-lg bg-marca-500/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+              </div>
+              <div class="text-3xl font-display font-bold text-white">${brl(faturamento)}</div>
+              <div class="flex items-center gap-1 mt-1">
+                <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <span class="text-xs text-green-400 font-medium">+22.1%</span>
+              </div>
+            `;
+          }
+
+          function renderChart() {
+            const maxVal = Math.max(...chartData);
+            const svgNS = 'http://www.w3.org/2000/svg';
+            const chartSvg = document.getElementById('chart-semanal');
+            if (!chartSvg) return;
+
+            chartSvg.innerHTML = '';
+            const barWidth = 24;
+            const gap = 12;
+            const chartHeight = 160;
+            const startX = 16;
+
+            chartData.forEach((val, i) => {
+              const barH = (val / maxVal) * (chartHeight - 24);
+              const x = startX + i * (barWidth + gap);
+              const y = chartHeight - barH;
+
+              const rect = document.createElementNS(svgNS, 'rect');
+              rect.setAttribute('x', x);
+              rect.setAttribute('y', y);
+              rect.setAttribute('width', barWidth);
+              rect.setAttribute('height', barH);
+              rect.setAttribute('rx', '4');
+              rect.setAttribute('fill', i === 5 ? '#D4AF37' : '#2A2A2A');
+              rect.setAttribute('class', 'transition-all duration-300 cursor-pointer');
+              rect.setAttribute('data-bar', i);
+              rect.addEventListener('mouseenter', function() {
+                this.setAttribute('fill', '#D4AF37');
+              });
+              rect.addEventListener('mouseleave', function() {
+                this.setAttribute('fill', i === 5 ? '#D4AF37' : '#2A2A2A');
+              });
+              chartSvg.appendChild(rect);
+
+              const text = document.createElementNS(svgNS, 'text');
+              text.setAttribute('x', x + barWidth / 2);
+              text.setAttribute('y', chartHeight + 14);
+              text.setAttribute('text-anchor', 'middle');
+              text.setAttribute('fill', '#6B7280');
+              text.setAttribute('font-size', '11');
+              text.setAttribute('font-family', 'Inter, sans-serif');
+              text.textContent = diasSemana[i];
+              chartSvg.appendChild(text);
+
+              const valueText = document.createElementNS(svgNS, 'text');
+              valueText.setAttribute('x', x + barWidth / 2);
+              valueText.setAttribute('y', y - 6);
+              valueText.setAttribute('text-anchor', 'middle');
+              valueText.setAttribute('fill', '#D4AF37');
+              valueText.setAttribute('font-size', '10');
+              valueText.setAttribute('font-weight', '600');
+              valueText.setAttribute('font-family', 'Inter, sans-serif');
+              valueText.textContent = val;
+              chartSvg.appendChild(valueText);
+            });
+          }
+
+          function renderOfertas(filter) {
+            const container = document.getElementById('lista-ofertas');
+            if (!container) return;
+            let lista = [...ofertas];
+
+            if (filter && filter !== 'todas') {
+              lista = lista.filter(o => o.status === filter);
+            }
+
+            if (lista.length === 0) {
+              container.innerHTML = `
+                <div class="text-center py-10 px-4">
+                  <div class="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+                  </div>
+                  <p class="text-gray-400 text-sm">Nenhuma oferta encontrada</p>
+                </div>
+              `;
+              return;
+            }
+
+            const statusBadge = (s) => {
+              const m = { ativo: { bg: 'bg-green-500/20', text: 'text-green-400', label: 'Ativo' }, pausado: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', label: 'Pausado' }, pendente: { bg: 'bg-orange-500/20', text: 'text-orange-400', label: 'Pendente' }, encerrado: { bg: 'bg-gray-500/20', text: 'text-gray-400', label: 'Encerrado' } };
+              const cfg = m[s] || m.pendente;
+              return `<span class="badge ${cfg.bg} ${cfg.text} px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide">${cfg.label}</span>`;
+            };
+
+            const initials = (nome) => nome.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+            const cores = ['#D4AF37', '#D4AF37', '#D4AF37', '#D4AF37', '#D4AF37', '#D4AF37', '#D4AF37', '#D4AF37'];
+            const gradientes = [
+              'linear-gradient(135deg, #1a1a2e, #16213e)', 'linear-gradient(135deg, #0f3460, #533483)',
+              'linear-gradient(135deg, #1a1a2e, #e94560)', 'linear-gradient(135deg, #0A0A0A, #D4AF37)',
+              'linear-gradient(135deg, #1B1B1B, #D4AF37)', 'linear-gradient(135deg, #16213e, #0f3460)',
+              'linear-gradient(135deg, #2d1b69, #D4AF37)', 'linear-gradient(135deg, #1a1a1a, #333333)'
+            ];
+
+            container.innerHTML = lista.map((o, i) => `
+              <div class="card p-3 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-transform" onclick="area_do_anunciante_detalheOferta(${o.id})">
+                <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background: ${gradientes[i % gradientes.length]}">
+                  <svg class="w-6 h-6 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <h4 class="text-sm font-semibold text-white truncate">${o.nome}</h4>
+                  </div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xs text-gray-500 line-through">${brl(o.precoOriginal)}</span>
+                    <span class="text-sm font-bold text-marca-500">${brl(o.precoPromo)}</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-[10px] text-gray-500">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                      ${o.visualizacoes.toLocaleString('pt-BR')}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                      ${o.pedidos}
+                    </span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end gap-1">
+                  ${statusBadge(o.status)}
+                  <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+            `).join('');
+          }
+
+          function renderBanners() {
+            const container = document.getElementById('lista-banners');
+            if (!container) return;
+            container.innerHTML = banners.map(b => {
+              const statusCfg = b.status === 'ativo' ? { bg: 'bg-green-500/20', text: 'text-green-400', dot: 'bg-green-400', label: 'Ativo' } : { bg: 'bg-yellow-500/20', text: 'text-yellow-400', dot: 'bg-yellow-400', label: 'Pendente' };
+              return `
+                <div class="card p-3 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-transform" onclick="area_do_anunciante_detalheBanner(${b.id})">
+                  <div class="w-20 h-12 rounded-lg bg-gradient-to-br from-[#D4AF37]/30 to-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-semibold text-white truncate">${b.nome}</h4>
+                    <div class="flex items-center gap-2 mt-1">
+                      <span class="badge ${statusCfg.bg} ${statusCfg.text} px-2 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full ${statusCfg.dot}"></span>
+                        ${statusCfg.label}
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] text-gray-500">
+                      <span>${b.impressoes.toLocaleString('pt-BR')} impressões</span>
+                      <span>${b.cliques.toLocaleString('pt-BR')} cliques</span>
+                    </div>
+                  </div>
+                  <svg class="w-4 h-4 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </div>
+              `;
+            }).join('');
+          }
+
+          window.area_do_anunciante_filtrarOfertas = function(filtro) {
+            document.querySelectorAll('[data-filtro-oferta]').forEach(btn => {
+              btn.classList.remove('bg-marca-500', 'text-black');
+              btn.classList.add('bg-gray-800', 'text-gray-400', 'hover:bg-gray-700');
+            });
+            const activeBtn = document.querySelector(`[data-filtro-oferta="${filtro}"]`);
+            if (activeBtn) {
+              activeBtn.classList.remove('bg-gray-800', 'text-gray-400', 'hover:bg-gray-700');
+              activeBtn.classList.add('bg-marca-500', 'text-black');
+            }
+            renderOfertas(filtro);
+          };
+
+          window.area_do_anunciante_abrirNovaOferta = function() {
+            const html = `
+              <form onsubmit="event.preventDefault(); area_do_anunciante_salvarOferta(this);" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Nome da Oferta *</label>
+                  <input type="text" name="nome" required placeholder="Ex: Hambúrguer Artesanal Duplo" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Descrição</label>
+                  <textarea name="descricao" rows="3" placeholder="Descreva sua oferta..." class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors resize-none"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Preço Original (R$)</label>
+                    <input type="text" name="precoOriginal" placeholder="0,00" oninput="this.value = this.value.replace(/[^0-9,]/g, '')" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Preço Promocional (R$)</label>
+                    <input type="text" name="precoPromo" placeholder="0,00" oninput="this.value = this.value.replace(/[^0-9,]/g, '')" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Validade da Oferta</label>
+                  <input type="date" name="validade" required class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Fotos da Oferta</label>
+                  <div class="border-2 border-dashed border-gray-700 rounded-xl p-6 text-center cursor-pointer hover:border-marca-500/50 transition-colors" onclick="toast('Upload de foto simulado com sucesso!', 'ok')">
+                    <svg class="w-8 h-8 text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-xs text-gray-400">Toque para adicionar foto</p>
+                    <p class="text-[10px] text-gray-500 mt-1">JPG, PNG até 5MB</p>
+                  </div>
+                </div>
+                <button type="submit" class="btn w-full bg-marca-500 text-black font-semibold py-3.5 rounded-xl text-sm active:scale-95 transition-transform">
+                  Publicar Oferta
+                </button>
+              </form>
+            `;
+            abrirModal(html, 'Nova Oferta');
+          };
+
+          window.area_do_anunciante_salvarOferta = function(form) {
+            const fd = new FormData(form);
+            const nome = fd.get('nome');
+            const precoOriginal = parseFloat(fd.get('precoOriginal').replace(',', '.')) || 0;
+            const precoPromo = parseFloat(fd.get('precoPromo').replace(',', '.')) || 0;
+            const validade = fd.get('validade');
+
+            if (precoPromo >= precoOriginal) {
+              toast('O preço promocional deve ser menor que o original.', 'erro');
+              return;
+            }
+
+            const nova = {
+              id: Date.now(), nome, precoOriginal, precoPromo, validade,
+              status: 'ativo', visualizacoes: 0, pedidos: 0, imagem: null
+            };
+            ofertas.unshift(nova);
+            renderOfertas('todas');
+            renderCards();
+            fecharModal();
+            toast('Oferta publicada com sucesso!', 'ok');
+          };
+
+          window.area_do_anunciante_novoBanner = function() {
+            const html = `
+              <form onsubmit="event.preventDefault(); area_do_anunciante_salvarBanner(this);" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Nome do Banner</label>
+                  <input type="text" name="nome" required placeholder="Ex: Banner Promoção Semanal" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Dimensão</label>
+                  <select name="dimensao" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:border-marca-500 focus:ring-1 focus:ring-marca-500 outline-none transition-colors">
+                    <option value="principal">Banner Principal (1120×300)</option>
+                    <option value="lateral">Banner Lateral (300×300)</option>
+                    <option value="rodape">Banner Rodapé (1120×120)</option>
+                    <option value="storie">Banner Storie (1080×1920)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-400 mb-1.5">Imagem do Banner</label>
+                  <div class="border-2 border-dashed border-gray-700 rounded-xl p-6 text-center cursor-pointer hover:border-marca-500/50 transition-colors" onclick="toast('Upload de imagem simulado!', 'ok')">
+                    <svg class="w-8 h-8 text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-xs text-gray-400">Toque para enviar imagem</p>
+                  </div>
+                </div>
+                <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 flex items-start gap-2">
+                  <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <p class="text-[11px] text-blue-400 leading-relaxed">O banner será revisado pela equipe e ficará disponível em até 24h após aprovação.</p>
+                </div>
+                <button type="submit" class="btn w-full bg-marca-500 text-black font-semibold py-3.5 rounded-xl text-sm active:scale-95 transition-transform">
+                  Solicitar Publicação
+                </button>
+              </form>
+            `;
+            abrirModal(html, 'Novo Banner Publicitário');
+          };
+
+          window.area_do_anunciante_salvarBanner = function(form) {
+            const fd = new FormData(form);
+            banners.push({
+              id: Date.now(), nome: fd.get('nome'),
+              status: 'pendente', impressoes: 0, cliques: 0
+            });
+            renderBanners();
+            fecharModal();
+            toast('Banner enviado para aprovação!', 'ok');
+          };
+
+          window.area_do_anunciante_detalheOferta = function(id) {
+            const o = ofertas.find(x => x.id === id);
+            if (!o) return;
+            const cfg = { ativo: { bg: 'bg-green-500/20', text: 'text-green-400', label: 'Ativo' }, pausado: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', label: 'Pausado' }, encerrado: { bg: 'bg-gray-500/20', text: 'text-gray-400', label: 'Encerrado' }, pendente: { bg: 'bg-orange-500/20', text: 'text-orange-400', label: 'Pendente' } };
+            const s = cfg[o.status] || cfg.pendente;
+            const html = `
+              <div class="space-y-4">
+                <div class="w-full h-32 rounded-xl bg-gradient-to-br from-[#1a1a2e] to-[#D4AF37]/20 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-display font-bold text-white">${o.nome}</h3>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="badge ${s.bg} ${s.text} px-2 py-0.5 rounded-full text-[10px] font-semibold">${s.label}</span>
+                    <span class="text-[10px] text-gray-500">Válida até ${dataBR(o.validade)}</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-gray-800/50 rounded-xl p-3">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Preço Original</span>
+                    <div class="text-lg font-bold text-gray-300 line-through mt-0.5">${brl(o.precoOriginal)}</div>
+                  </div>
+                  <div class="bg-marca-500/10 rounded-xl p-3 border border-marca-500/20">
+                    <span class="text-[10px] text-marca-500 uppercase tracking-wider">Preço Promo</span>
+                    <div class="text-lg font-bold text-marca-500 mt-0.5">${brl(o.precoPromo)}</div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <svg class="w-4 h-4 text-gray-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <div class="text-lg font-bold text-white">${o.visualizacoes.toLocaleString('pt-BR')}</div>
+                    <span class="text-[10px] text-gray-500">Visualizações</span>
+                  </div>
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <svg class="w-4 h-4 text-gray-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <div class="text-lg font-bold text-white">${o.pedidos}</div>
+                    <span class="text-[10px] text-gray-500">Pedidos</span>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="area_do_anunciante_toggleStatus(${o.id}); fecharModal();" class="btn flex-1 ${o.status === 'ativo' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : 'bg-green-500/20 text-green-400 border border-green-500/30'} font-medium py-2.5 rounded-xl text-xs active:scale-95 transition-transform">
+                    ${o.status === 'ativo' ? 'Pausar Oferta' : 'Reativar Oferta'}
+                  </button>
+                  <button onclick="area_do_anunciante_excluirOferta(${o.id}); fecharModal();" class="btn bg-red-500/20 text-red-400 border border-red-500/30 font-medium py-2.5 px-4 rounded-xl text-xs active:scale-95 transition-transform">
+                    Excluir
+                  </button>
+                </div>
+              </div>
+            `;
+            abrirModal(html, 'Detalhe da Oferta');
+          };
+
+          window.area_do_anunciante_toggleStatus = function(id) {
+            const o = ofertas.find(x => x.id === id);
+            if (!o) return;
+            if (o.status === 'ativo') { o.status = 'pausado'; toast('Oferta pausada.', 'info'); }
+            else { o.status = 'ativo'; toast('Oferta reativada!', 'ok'); }
+            renderOfertas('todas');
+            renderCards();
+          };
+
+          window.area_do_anunciante_excluirOferta = function(id) {
+            const idx = ofertas.findIndex(x => x.id === id);
+            if (idx > -1) { ofertas.splice(idx, 1); renderOfertas('todas'); renderCards(); toast('Oferta removida.', 'info'); }
+          };
+
+          window.area_do_anunciante_detalheBanner = function(id) {
+            const b = banners.find(x => x.id === id);
+            if (!b) return;
+            const cfg = b.status === 'ativo' ? { bg: 'bg-green-500/20', text: 'text-green-400', dot: 'bg-green-400', label: 'Ativo' } : { bg: 'bg-yellow-500/20', text: 'text-yellow-400', dot: 'bg-yellow-400', label: 'Pendente' };
+            const html = `
+              <div class="space-y-4">
+                <div class="w-full h-28 rounded-xl bg-gradient-to-br from-[#D4AF37]/30 to-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-display font-bold text-white">${b.nome}</h3>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="badge ${cfg.bg} ${cfg.text} px-2 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full ${cfg.dot}"></span>${cfg.label}</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <svg class="w-4 h-4 text-gray-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <div class="text-lg font-bold text-white">${b.impressoes.toLocaleString('pt-BR')}</div>
+                    <span class="text-[10px] text-gray-500">Impressões</span>
+                  </div>
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <svg class="w-4 h-4 text-gray-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                    <div class="text-lg font-bold text-white">${b.cliques.toLocaleString('pt-BR')}</div>
+                    <span class="text-[10px] text-gray-500">Cliques</span>
+                  </div>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-3">
+                  <span class="text-[10px] text-gray-400 uppercase tracking-wider">CTR (Taxa de Clique)</span>
+                  <div class="text-xl font-bold text-marca-500 mt-1">${b.impressoes > 0 ? ((b.cliques / b.impressoes) * 100).toFixed(2) : '0.00'}%</div>
+                  <div class="w-full bg-gray-700 rounded-full h-1.5 mt-2">
+                    <div class="bg-marca-500 rounded-full h-1.5 transition-all" style="width: ${b.impressoes > 0 ? Math.min((b.cliques / b.impressoes) * 1000, 100) : 0}%"></div>
+                  </div>
+                </div>
+                <button onclick="area_do_anunciante_removerBanner(${b.id}); fecharModal();" class="btn w-full bg-red-500/20 text-red-400 border border-red-500/30 font-medium py-2.5 rounded-xl text-xs active:scale-95 transition-transform">
+                  Remover Banner
+                </button>
+              </div>
+            `;
+            abrirModal(html, 'Detalhe do Banner');
+          };
+
+          window.area_do_anunciante_removerBanner = function(id) {
+            const idx = banners.findIndex(x => x.id === id);
+            if (idx > -1) { banners.splice(idx, 1); renderBanners(); toast('Banner removido.', 'info'); }
+          };
+
+          window.area_do_anunciante_verRelatorio = function() {
+            const maior = Math.max(...chartData);
+            const diaMaior = diasSemana[chartData.indexOf(maior)];
+            const totalSemana = chartData.reduce((a, b) => a + b, 0);
+            const html = `
+              <div class="space-y-4">
+                <div class="bg-marca-500/10 border border-marca-500/20 rounded-xl p-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    <span class="text-sm font-semibold text-marca-500">Resumo da Semana</span>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-1">Total de pedidos: <strong class="text-white">${totalSemana}</strong> · Melhor dia: <strong class="text-marca-500">${diaMaior}</strong> (${maior} pedidos)</p>
+                </div>
+                <div class="space-y-3">
+                  ${chartData.map((v, i) => {
+                    const pct = (v / maior) * 100;
+                    return `<div class="flex items-center gap-3">
+                      <span class="text-[10px] text-gray-500 w-8">${diasSemana[i]}</span>
+                      <div class="flex-1 bg-gray-800 rounded-full h-2">
+                        <div class="bg-marca-500 rounded-full h-2 transition-all" style="width: ${pct}%"></div>
+                      </div>
+                      <span class="text-xs text-white font-semibold w-8 text-right">${v}</span>
+                    </div>`;
+                  }).join('')}
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <span class="text-[10px] text-gray-400">Média/dia</span>
+                    <div class="text-lg font-bold text-white">${(totalSemana / 7).toFixed(0)}</div>
+                  </div>
+                  <div class="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <span class="text-[10px] text-gray-400">Ticket Médio</span>
+                    <div class="text-lg font-bold text-marca-500">${brl(28.50)}</div>
+                  </div>
+                </div>
+                <button onclick="toast('Relatório exportado! Verifique seu e-mail.', 'ok'); fecharModal();" class="btn w-full bg-marca-500 text-black font-semibold py-3 rounded-xl text-sm active:scale-95 transition-transform">
+                  Exportar Relatório
+                </button>
+              </div>
+            `;
+            abrirModal(html, 'Relatório Semanal');
+          };
+
+          renderCards();
+          renderOfertas('todas');
+          renderBanners();
+          setTimeout(renderChart, 50);
+
+          window._area_refresh = { renderCards, renderOfertas, renderBanners, renderChart };
+        }
+
+        document.addEventListener('DOMContentLoaded', area_do_anunciante_init);
+      </script>
+
+      <div class="space-y-5">
+        <!-- Header -->
+        <div>
+          <h1 class="text-xl font-display font-bold text-white">Área do Anunciante</h1>
+          <p class="text-xs text-gray-400 mt-0.5">Gerencie suas ofertas e banners</p>
+        </div>
+
+        <!-- Cards de Métricas -->
+        <div class="grid grid-cols-2 gap-3">
+          <div id="card-ofertas-ativas" class="card p-3"></div>
+          <div id="card-visualizacoes" class="card p-3"></div>
+          <div id="card-pedidos" class="card p-3"></div>
+          <div id="card-faturamento" class="card p-3"></div>
+        </div>
+
+        <!-- Nova Oferta -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-display font-semibold text-white">Nova Oferta</h2>
+          </div>
+          <button onclick="area_do_anunciante_abrirNovaOferta()" class="btn w-full bg-marca-500 hover:bg-marca-400 text-black font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg shadow-marca-500/20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            Cadastrar Nova Promoção
+          </button>
+        </div>
+
+        <!-- Relatórios -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-display font-semibold text-white">Desempenho Semanal</h2>
+            <button onclick="area_do_anunciante_verRelatorio()" class="text-[10px] text-marca-500 font-medium hover:text-marca-400 transition-colors flex items-center gap-1">
+              Ver completo
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="card p-4">
+            <svg id="chart-semanal" viewBox="0 0 280 180" class="w-full" style="height: 180px;"></svg>
+          </div>
+        </div>
+
+        <!-- Meus Banners -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-display font-semibold text-white">Meus Banners</h2>
+            <button onclick="area_do_anunciante_novoBanner()" class="text-[10px] text-marca-500 font-medium hover:text-marca-400 transition-colors flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+              Novo
+            </button>
+          </div>
+          <div id="lista-banners" class="space-y-2"></div>
+        </div>
+
+        <!-- Meus Ofertas -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-display font-semibold text-white">Minhas Ofertas</h2>
+          </div>
+          <div class="flex gap-2 mb-3 overflow-x-auto pb-1 -mx-1 px-1">
+            <button data-filtro-oferta="todas" onclick="area_do_anunciante_filtrarOfertas('todas')" class="bg-marca-500 text-black px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap active:scale-95 transition-all">Todas</button>
+            <button data-filtro-oferta="ativo" onclick="area_do_anunciante_filtrarOfertas('ativo')" class="bg-gray-800 text-gray-400 hover:bg-gray-700 px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap active:scale-95 transition-all">Ativas</button>
+            <button data-filtro-oferta="pausado" onclick="area_do_anunciante_filtrarOfertas('pausado')" class="bg-gray-800 text-gray-400 hover:bg-gray-700 px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap active:scale-95 transition-all">Pausadas</button>
+            <button data-filtro-oferta="encerrado" onclick="area_do_anunciante_filtrarOfertas('encerrado')" class="bg-gray-800 text-gray-400 hover:bg-gray-700 px-3 py-1.5 rounded-lg text-[11px] font-semibold whitespace-nowrap active:scale-95 transition-all">Encerradas</button>
+          </div>
+          <div id="lista-ofertas" class="space-y-2"></div>
+        </div>
+
+        <div class="h-6"></div>
+      </div>
+    </section>
+
     <!-- TELAS -->
     </main>
 
