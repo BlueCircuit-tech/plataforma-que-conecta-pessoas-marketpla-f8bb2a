@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Conex Ofertas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            marca: {
+              50:  '#f7f5ec',
+              100: '#efe9ce',
+              200: '#dfd59d',
+              300: '#cfbf6c',
+              400: '#bfa93b',
+              500: '#D4AF37',
+              600: '#a8872b',
+              700: '#7d6420',
+              800: '#524115',
+              900: '#271e0b',
+            },
+            superficie: {
+              bg:     '#0A0A0A',
+              card:   '#141414',
+              cardHover: '#1C1C1C',
+              border: '#262626',
+              muted:  '#737373',
+              subtle: '#A3A3A3',
+              claro:  '#FAFAFA',
+            },
+            destaque: {
+              light: '#FFF8E1',
+              DEFAULT: '#FBBF24',
+              dark: '#F59E0B',
+            }
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            body:     ['DM Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'marca': '0 4px 20px -2px rgba(212,175,55,0.25)',
+            'marca-lg': '0 8px 40px -4px rgba(212,175,55,0.35)',
+            'card': '0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3)',
+            'card-hover': '0 8px 25px rgba(0,0,0,0.5), 0 2px 8px rgba(212,175,55,0.15)',
+            'elevated': '0 12px 40px rgba(0,0,0,0.6)',
+          },
+          borderRadius: {
+            'marca': '16px',
+            'marca-sm': '10px',
+            'marca-lg': '24px',
+            'marca-xl': '32px',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.3s ease-out forwards',
+            'slide-up': 'slideUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards',
+            'slide-down': 'slideDown 0.25s ease-out forwards',
+            'toast-in': 'toastIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards',
+            'toast-out': 'toastOut 0.3s ease-in forwards',
+            'pulse-slow': 'pulseSlow 2.5s ease-in-out infinite',
+            'bounce-subtle': 'bounceSubtle 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideDown: {
+              '0%': { opacity: '0', transform: 'translateY(-8px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            toastIn: {
+              '0%': { opacity: '0', transform: 'translateX(60px) scale(0.9)' },
+              '100%': { opacity: '1', transform: 'translateX(0) scale(1)' },
+            },
+            toastOut: {
+              '0%': { opacity: '1', transform: 'translateX(0) scale(1)' },
+              '100%': { opacity: '0', transform: 'translateX(60px) scale(0.85)' },
+            },
+            pulseSlow: {
+              '0%,100%': { opacity: '0.6' },
+              '50%': { opacity: '1' },
+            },
+            bounceSubtle: {
+              '0%': { transform: 'scale(0.95)' },
+              '50%': { transform: 'scale(1.02)' },
+              '100%': { transform: 'scale(1)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #050505;
+      margin: 0;
+    }
+
+    /* ── Transição de telas ── */
+    [data-tela]:not(.hidden) {
+      animation: fadeIn 0.28s ease-out, slideUp 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* ── Scrollbar discreta ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 8px; }
+    .scroll-area { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+    /* ── Foco visível ── */
+    :focus-visible {
+      outline: 2px solid #D4AF37;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── Botão ativo na navegação ── */
+    .nav-btn.ativo {
+      color: #D4AF37;
+    }
+    .nav-btn.ativo .nav-dot {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    .nav-dot {
+      opacity: 0;
+      transform: scaleX(0);
+      transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* ── Utilitários reutilizáveis ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .badge-gold { background: rgba(212,175,55,0.15); color: #D4AF37; }
+    .badge-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .badge-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .badge-gray { background: rgba(115,115,115,0.15); color: #a3a3a3; }
+
+    .card {
+      background: #141414;
+      border: 1px solid #262626;
+      border-radius: 16px;
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+    .card-interactive:hover {
+      border-color: #404040;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 2px 8px rgba(212,175,55,0.12);
+    }
+    .card-interactive:active {
+      transform: scale(0.985);
+      transition: transform 0.1s ease;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:active { transform: scale(0.96); }
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #b8942d 100%);
+      color: #0A0A0A;
+      box-shadow: 0 4px 20px -2px rgba(212,175,55,0.3);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 28px -2px rgba(212,175,55,0.45);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: #262626;
+      color: #FAFAFA;
+      border: 1px solid #404040;
+    }
+    .btn-secondary:hover { background: #333; }
+    .btn-ghost {
+      background: transparent;
+      color: #D4AF37;
+      border: 1.5px solid #D4AF37;
+    }
+    .btn-ghost:hover { background: rgba(212,175,55,0.08); }
+    .btn-block { width: 100%; }
+    .btn-sm { padding: 10px 18px; font-size: 0.8rem; border-radius: 10px; }
+    .btn-danger {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #fff;
+    }
+
+    /* ── Toast container ── */
+    #toast-container {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: calc(100% - 32px);
+      max-width: 370px;
+      pointer-events: none;
+    }
+    .toast {
+      pointer-events: auto;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      animation: toastIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .toast.saindo { animation: toastOut 0.3s ease-in forwards; }
+    .toast-ok    { background: #14532d; color: #bbf7d0; border: 1px solid #22c55e; }
+    .toast-erro  { background: #450a0a; color: #fecaca; border: 1px solid #ef4444; }
+    .toast-info  { background: #1e1b4b; color: #c7d2fe; border: 1px solid #818cf8; }
+
+    /* ── Modal ── */
+    #modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 8000;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    #modal-overlay.aberto {
+      display: flex;
+      animation: fadeIn 0.2s ease-out;
+    }
+    #modal-card {
+      background: #141414;
+      border: 1px solid #262626;
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 430px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    #modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 12px;
+      border-bottom: 1px solid #262626;
+    }
+    #modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    #modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #404040;
+      background: #1C1C1C;
+      color: #a3a3a3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    #modal-close:hover { background: #262626; color: #FAFAFA; }
+
+    /* ── Moldura de celular (desktop) ── */
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      height: 100vh;
+      max-height: 844px;
+      margin: 0 auto;
+      background: #0A0A0A;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    @media (min-width: 500px) {
+      body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+      .phone-frame {
+        border-radius: 44px;
+        border: 3px solid #2a2a2a;
+        height: 844px;
+        box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+      }
+    }
+    @media (max-width: 499px) {
+      .phone-frame {
+        border-radius: 0;
+        max-height: 100vh;
+        border: none;
+      }
+      .status-bar { padding-top: 8px; }
+    }
+
+    /* ── Status bar ── */
+    .status-bar {
+      padding: 10px 24px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #FAFAFA;
+      flex-shrink: 0;
+    }
+    .status-icons { display: flex; align-items: center; gap: 6px; }
+
+    /* ── Nav bar ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 4px 12px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(38,38,38,0.8);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 4px 6px;
+      background: none;
+      border: none;
+      color: #737373;
+      font-size: 0.6rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.2s;
+      min-width: 52px;
+    }
+    .nav-btn svg {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .nav-btn.ativo svg { transform: scale(1.1); }
+    .nav-btn:active svg { transform: scale(0.9); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       MOLDURA DE CELULAR
+       ═══════════════════════════════════════════ -->
+  <div class="phone-frame" id="app-frame">
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span id="status-time">9:41</span>
+      <div class="status-icons">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M1 8.5h1v3H1zM4 6.5h1v5H4zM7 4.5h1v7H7zM10 2.5h1v9h-1zM13 0.5h1v11h-1z" opacity="0.35"/><path d="M1 9h1v2H1zM4 7h1v4H4zM7 5h1v6H7zM10 3h1v8h-1zM13 1h1v10h-1z"/></svg>
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2C4.9 2 2.4 3.1.9 5l1.2 1.6C4 5 7.1 4.1 10 4.1c3 0 5.5.7 7.3 1.9L15 5c-2-2.1-5-3-7.5-3z" opacity="0.35"/><path d="M10 6.1C7.1 6.1 4 7 .9 8.5L2.1 10.1C4.4 8.2 7.5 7.2 10 7.2s5.6.9 7.9 2.9l1.2-1.6C15.5 7.8 13 6.1 10 6.1z" opacity="0.6"/><path d="M12.1 9l-.8 1.3C13.6 10.5 15 11.4 15 12h-1.5c0-.5-.6-.8-1.4-1z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0" y="1" width="22" height="10" rx="3" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/><rect x="1" y="2" width="18" height="8" rx="2" opacity="0.7"/><rect x="22.5" y="4" width="2.5" height="4" rx="1" opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         ÁREA DE CONTEÚDO (TELAS SERÃO INJETADAS)
+         ═══════════════════════════════════════════ -->
+    <main class="flex-1 overflow-hidden relative" id="main-content">
+      <!-- TELAS -->
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+         NAVEGAÇÃO INFERIOR
+         ═══════════════════════════════════════════ -->
+    <nav class="bottom-nav">
+      <button class="nav-btn ativo" data-nav="tela-inicial" onclick="mostrarTela('tela-inicial')" aria-label="Tela Inicial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Início</span>
+        <div class="nav-dot w-1 h-1 rounded-full bg-marca-500"></div>
+      </button>
+      <button class="nav-btn" data-nav="detalhe-da-oferta" onclick="mostrarTela('detalhe-da-oferta')" aria-label="Detalhe da Oferta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Oferta</span>
+        <div class="nav-dot w-1 h-1 rounded-full bg-marca-500"></div>
+      </button>
+      <button class="nav-btn" data-nav="carrinho-e-checkout" onclick="mostrarTela('carrinho-e-checkout')" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Carrinho</span>
+        <div class="nav-dot w-1 h-1 rounded-full bg-marca-500"></div>
+      </button>
+      <button class="nav-btn" data-nav="meus-pedidos" onclick="mostrarTela('meus-pedidos')" aria-label="Meus Pedidos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Pedidos</span>
+        <div class="nav-dot w-1 h-1 rounded-full bg-marca-500"></div>
+      </button>
+      <button class="nav-btn" data-nav="meu-perfil" onclick="mostrarTela('meu-perfil')" aria-label="Meu Perfil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Perfil</span>
+        <div class="nav-dot w-1 h-1 rounded-full bg-marca-500"></div>
+      </button>
+    </nav>
+
+    <!-- Overlay de navegação extra (botões de admin/anunciante) -->
+    <!--
+    <button class="fixed bottom-20 right-4 z-50 ..." onclick="mostrarTela('area-do-anunciante')">
+    -->
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       TOAST CONTAINER
+       ═══════════════════════════════════════════ -->
+  <div id="toast-container"></div>
+
+  <!-- ═══════════════════════════════════════════
+       MODAL GENÉRICO
+       ═══════════════════════════════════════════ -->
+  <div id="modal-overlay" onclick="if(event.target===this)fecharModal()">
+    <div id="modal-card">
+      <div id="modal-header">
+        <h3 id="modal-titulo" class="font-display font-semibold text-surf-claro text-base"></h3>
+        <button id="modal-close" onclick="fecharModal()" aria-label="Fechar modal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       UTILITÁRIOS E ROTEADOR
+       ═══════════════════════════════════════════ -->
+  <script>
+    // ── Relógio da status bar ──
+    (function () {
+      const el = document.getElementById('status-time');
+      function tick () {
+        const d = new Date();
+        el.textContent = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      }
+      tick();
+      setInterval(tick, 30000);
+    })();
+
+    // ── Toast ──
+    function toast (mensagem, tipo) {
+      tipo = tipo || 'info';
+      var container = document.getElementById('toast-container');
+      var div = document.createElement('div');
+      div.className = 'toast toast-' + tipo;
+
+      var icons = {
+        ok:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>',
+        erro: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+        info: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+      };
+      div.innerHTML = (icons[tipo] || icons.info) + '<span>' + mensagem + '</span>';
+      container.appendChild(div);
+
+      setTimeout(function () {
+        div.classList.add('saindo');
+        div.addEventListener('animationend', function () { div.remove(); });
+      }, 3000);
+    }
+
+    // ── Modal ──
+    function abrirModal (html, titulo) {
+      document.getElementById('modal-titulo').textContent = titulo || '';
+      document.getElementById('modal-body').innerHTML = html;
+      document.getElementById('modal-overlay').classList.add('aberto');
+      document.body.style.overflow = 'hidden';
+    }
+    function fecharModal () {
+      document.getElementById('modal-overlay').classList.remove('aberto');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') fecharModal();
+    });
+
+    // ── Formatadores ──
+    function brl (valor) {
+      return 'R$ ' + Number(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function dataBR (iso) {
+      var d = new Date(iso + 'T00:00:00');
+      var dia = String(d.getDate()).padStart(2, '0');
+      var mes = String(d.getMonth() + 1).padStart(2, '0');
+      var ano = d.getFullYear();
+      return dia + '/' + mes + '/' + ano;
+    }
+
+    // ── Roteador ──
+    function mostrarTela (id) {
+      document.querySelectorAll('[data-tela]').forEach(function (s) {
+        s.classList.toggle('hidden', s.dataset.tela !== id);
+      });
+      document.querySelectorAll('[data-nav]').forEach(function (b) {
+        b.classList.toggle('ativo', b.dataset.nav === id);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      mostrarTela('tela-inicial');
+    });
+  </script>
+</body>
+</html>
